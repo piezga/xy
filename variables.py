@@ -39,3 +39,6 @@ chi_error_factor = 1
 num_of_estim = 2#120
 
 block_size = 10**4#2**12#2**15
+
+
+#test per github
