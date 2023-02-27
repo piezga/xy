@@ -1,15 +1,15 @@
-#import scienceplots
+import scienceplots
 import numpy as np
-#import matplotlib.pyplot as plt
-#from matplotlib import cm
+import matplotlib.pyplot as plt
+from matplotlib import cm
 import os
 
-#from statsmodels.api import GLS as gls
-#from statsmodels.api import add_constant as add_const
-#from sklearn.preprocessing import PolynomialFeatures
+from statsmodels.api import GLS as gls
+from statsmodels.api import add_constant as add_const
+from sklearn.preprocessing import PolynomialFeatures
 from variables import *
 
-#plt.style.use(['science'])
+plt.style.use(['science'])
 
 
 def jackknife(sample,block):
