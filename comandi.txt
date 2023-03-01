@@ -1,3 +1,3 @@
 -login	ssh pietro.zgaga@login.hpc.unipr.it
 
--copia	scp -r pietro.zgaga@login.hpc.unipr.it/hpc/home/pietro.zgaga/zgaga/data/
+-copia	scp -r pietro.zgaga@login.hpc.unipr.it:/hpc/home/pietro.zgaga/zgaga/data/
