@@ -7,10 +7,12 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-Ls = [16,32,64,128,256]
+Ls = [16,32,128,256]
 test = 2
 
-for L in Ls:    
+fig, ax = plt.subplots(4)
+mxs = []
+for i,L in enumerate(Ls):    
     temps = np.load(f'data/sigma_2.10/simulation_sigma210/L_{L}/magnetization/T.npy', allow_pickle=True)
     mx = np.load(f'data/sigma_2.10/simulation_sigma210/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)[:,50000:]
     my = np.load(f'data/sigma_2.10/simulation_sigma210/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)[:,50000:]
@@ -49,12 +51,16 @@ for L in Ls:
         m4 = m2**2 
         binder.append(2 - m4.mean()/m2.mean()**2)
         m.append(m2.mean())
-    plt.figure(1)
-    plt.plot(T,binder,label=str(L))
-    plt.legend()
+    # plt.figure(1)
+    # plt.plot(T,binder,label=str(L))
+    # plt.legend()
     plt.figure(2)
     plt.plot(T,m,label=str(L))
     plt.legend()
+    plt.figure(3)
+    plt.plot(np.abs(mx[4]), label=str(L))
+    plt.legend()
+    
     
     
     

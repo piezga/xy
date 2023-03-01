@@ -5,7 +5,7 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-L = 128
+L = 256
 test = 2
 
 temps = np.load(f'data/sigma_2.10/simulation_sigma210/L_{L}/magnetization/T.npy', allow_pickle=True)
