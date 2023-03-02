@@ -7,7 +7,7 @@ import os
 
 plt.rcParams['figure.dpi'] = 150
 
-Ls = [16,32,128,256]
+Ls = [16,32,64,128,256]
 testnum = 6  #per ora hardcoded
 sigmastr = "%0.2f" % 2.10
 sigmafloat = float(sigmastr)
