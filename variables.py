@@ -7,10 +7,10 @@ if __name__ == "__main__":
 g_drive_dir = ''#G:/Other computers/principal/Università/DOTTORATO/Codes/dll/'
 
 d = 2
-test = 6
-simulation = 'sigma210'
+test = 15
+simulation = 'sigma250'
 
-sigma = '2.10'
+sigma = '2.50'
 
 data_path = g_drive_dir + 'data/sigma_'+sigma+'/'
 #for 1D:
@@ -26,7 +26,7 @@ path = data_path+'simulation_'+str(simulation)#+'/old/'
 print('simulation: ', simulation)
 print('SIGMA: ', sigma)
 
-Ls_chosen = np.array([16,32,64,128,256])#16,32,45,64,90,128,181,256,362,512,750 #45,90,181,362
+Ls_chosen = np.array([512])#16,32,45,64,90,128,181,256,362,512,750 #45,90,181,362
 #16,32,64,128,256,512,45,90,181,362,724
 if d == 1:
     Ls_chosen = np.array([512,1024,2048,4096,8192,16384,32768])#,8192,16384,32768,65536

@@ -7,9 +7,9 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-Ls = [16,32,64,128,256]
+Ls = [256] #[16,32,64,128,256]
 test = 2  #scegli il test
-sigmastr = "%0.2f" % 2.10
+sigmastr = "%0.2f" % 2.50
 sigmafloat = float(sigmastr)
 sigmaname = int(sigmafloat*100)
 mypath = 'data/sigma_{sigmastr}/simulation_sigma{sigmaname}/plots/'   #creo cartella plots
@@ -32,12 +32,12 @@ for L in Ls:
     for t in range(len(T)):
         # fig, ax = plt.subplots()
         # ax.plot(mx[t])
-        # ax.set(xlabel = 'timestep', ylabel = 'mx', title = 'T = ' + str(T[t]))
+        # ax.set(xlabel = 'timestep', ylabel = 'mx', title = 'T = ' +  str(T[t]))
         # ax.grid()
         # plt.savefig(magpath + f'T_{t}_' + str(T[t]) + '.png')
         # plt.close()
         plt.figure()
-        plt.scatter(mx[t],my[t])
-        plt.savefig(magpath + f'scatterT_{t}_' + str(T[t]) + '.png')
-        
-        
+        plt.scatter(mx[t],my[t], label=str(t))
+        #plt.savefig(magpath + f'scatterT_{t}_' + str(T[t]) + '.png')
+        plt.legend()
+        plt.show()
