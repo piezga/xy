@@ -7,10 +7,10 @@ if __name__ == "__main__":
 g_drive_dir = ''#G:/Other computers/principal/Università/DOTTORATO/Codes/dll/'
 
 d = 2
-test = 6
-simulation = 'sigma210'
+test = 13
+simulation = 'sigma250'
 
-sigma = '2.10'
+sigma = '2.50'
 
 data_path = g_drive_dir + 'data/sigma_'+sigma+'/'
 #for 1D:
