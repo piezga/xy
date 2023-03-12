@@ -309,14 +309,15 @@ Scheme:
                 //new_theta is the difference between theta_q and the new angle.
                 //It doesn't matter if the new angle is out of the boundary (-pi,pi],
                 //because we only compute sin and cos of angles...(?)
-                tmp = new_theta + theta_q;
-                if (tmp > M_PI){
-                  tmp -= 2*M_PI;
-                }
-                else if(tmp < -M_PI){
-                  tmp += 2*M_PI;
-                }
-                lattice[center_x][center_y] = tmp;
+                lattice[center_x][center_y] = new_theta + theta_q;
+                // tmp = new_theta + theta_q;
+                // if (tmp > M_PI){
+                //   tmp -= 2*M_PI;
+                // }
+                // else if(tmp < -M_PI){
+                //   tmp += 2*M_PI;
+                // }
+                // lattice[center_x][center_y] = tmp;
               }
             }
             else{
@@ -324,14 +325,15 @@ Scheme:
               new_theta = 2*M_PI*sfmt_genrand_res53(&sfmt) - M_PI;
               unif = sfmt_genrand_res53(&sfmt);
               if (unif < exp(-energy*(1-cos(new_theta)))){
-                tmp = new_theta + theta_q;
-                if (tmp > M_PI){
-                  tmp -= 2*M_PI;
-                }
-                else if(tmp < -M_PI){
-                  tmp += 2*M_PI;
-                }
-                lattice[center_x][center_y] = tmp;
+                 lattice[center_x][center_y] = new_theta + theta_q;
+                // tmp = new_theta + theta_q;
+                // if (tmp > M_PI){
+                //   tmp -= 2*M_PI;
+                // }
+                // else if(tmp < -M_PI){
+                //   tmp += 2*M_PI;
+                // }
+                // lattice[center_x][center_y] = tmp;
               }
             }
 
@@ -389,14 +391,15 @@ printf("END OF TERMALIZATION for thread:%d\n", temperature);
                 //new_theta is the difference between theta_q and the new angle.
                 //It doesn't matter if the new angle is out of the boundary (-pi,pi],
                 //because we only compute sin and cos of angles...(?)
-                tmp = new_theta + theta_q;
-                if (tmp > M_PI){
-                  tmp -= 2*M_PI;
-                }
-                else if(tmp < -M_PI){
-                  tmp += 2*M_PI;
-                }
-                lattice[center_x][center_y] = tmp;
+                lattice[center_x][center_y] = new_theta + theta_q;
+                // tmp = new_theta + theta_q;
+                // if (tmp > M_PI){
+                //   tmp -= 2*M_PI;
+                // }
+                // else if(tmp < -M_PI){
+                //   tmp += 2*M_PI;
+                // }
+                // lattice[center_x][center_y] = tmp;
               }
             }
             else{
@@ -404,14 +407,15 @@ printf("END OF TERMALIZATION for thread:%d\n", temperature);
               new_theta = 2*M_PI*sfmt_genrand_res53(&sfmt) - M_PI;
               unif = sfmt_genrand_res53(&sfmt);
               if (unif < exp(-energy*(1-cos(new_theta)))){
-                tmp = new_theta + theta_q;
-                if (tmp > M_PI){
-                  tmp -= 2*M_PI;
-                }
-                else if(tmp < -M_PI){
-                  tmp += 2*M_PI;
-                }
-                lattice[center_x][center_y] = tmp;
+                lattice[center_x][center_y] = new_theta + theta_q;
+                // tmp = new_theta + theta_q;
+                // if (tmp > M_PI){
+                //   tmp -= 2*M_PI;
+                // }
+                // else if(tmp < -M_PI){
+                //   tmp += 2*M_PI;
+                // }
+                // lattice[center_x][center_y] = tmp;
               }
             }
           }

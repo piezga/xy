@@ -7,37 +7,49 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-Ls = [256] #[16,32,64,128,256]
-test = 2  #scegli il test
+Ls = [512] #[16,32,64,128,256]
+tests = np.arange(10) #scegli il test
+t = 2
 sigmastr = "%0.2f" % 2.50
 sigmafloat = float(sigmastr)
-name = int(sigmafloat*100)
-mypath = 'data/sigma_{sigmastr}/simulation_sigma{name}/plots/'   #creo cartella plots
+name = 'taglia512'
+mypath = 'data/sigma_{sigmastr}/simulation_{name}/plots/'   #creo cartella plots
 if not os.path.isdir(mypath):
     os.makedirs(mypath)
     
     
 for L in Ls:
+    for i, test in enumerate(tests):
     
-    Lpath = f'data/sigma_{sigmastr}/simulation_sigma{name}/plots/L_{L}/' 
-    if not os.path.isdir(Lpath):
-        os.makedirs(Lpath)
+        Lpath = f'data/sigma_{sigmastr}/simulation_{name}/plots/L_{L}/' 
+        if not os.path.isdir(Lpath):
+            os.makedirs(Lpath)
+        
+        mx = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)[t]
+        my = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)[t]
+        magpath = f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/plots_test_{test}/'
+        
+        if not os.path.isdir(magpath):
+            os.makedirs(magpath)
+            
+        T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/T.npy', allow_pickle=True)
+
     
-    mx = np.load(f'data/sigma_{sigmastr}/simulation_sigma{name}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)
-    my = np.load(f'data/sigma_{sigmastr}/simulation_sigma{name}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True) 
-    magpath = f'data/sigma_{sigmastr}/simulation_sigma{name}/L_{L}/magnetization/plots_test_{test}/'
-    if not os.path.isdir(magpath):
-        os.makedirs(magpath)
-    T = np.load(f'data/sigma_{sigmastr}/simulation_sigma{name}/L_{L}/magnetization/T.npy', allow_pickle=True)
-    for t in range(len(T)):
-        # fig, ax = plt.subplots()
-        # ax.plot(mx[t])
-        # ax.set(xlabel = 'timestep', ylabel = 'mx', title = 'T = ' +  str(T[t]))
-        # ax.grid()
-        # plt.savefig(magpath + f'T_{t}_' + str(T[t]) + '.png')
-        # plt.close()
-        plt.figure()
-        plt.scatter(mx[t],my[t], label=str(t))
+        #mx = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/mx_test_{i}.npy', allow_pickle=True)[3]
+        #my = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/my_test_{i}.npy', allow_pickle=True)[3]
+        
+        m2 = mx**2 + my**2
+        
+        plt.figure(i+1)
+        plt.plot(m2, label = str(test))
+        plt.legend()        
+        
+    
+    
+    # for t in range(20):
+    #     plt.figure()
+    #     plt.plot(m2[t])
+    #     plt.title(str(T[t]))
         #plt.savefig(magpath + f'scatterT_{t}_' + str(T[t]) + '.png')
-        plt.legend()
-        plt.show()
+        
+    
