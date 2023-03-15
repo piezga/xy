@@ -150,5 +150,16 @@ def naive_derivative(x,y):
     
     return (y[:-1]-y[1:])/(x[:-1]-x[1:])
     
+def n_linfit_params(X,Y,fitpoints):
+    ms = []
+    qs = []
+    for i in range(len(X)-fitpoints+1):
+        x = X[i:i+fitpoints]
+        y = Y[i:i+fitpoints]
+        m,q = np.polyfit(x,y,1)
+        ms.append(m)
+        qs.append(q)
+    return ms, qs
+    
 if __name__ == "__main__":
   print('Just a module! There is not a reason to execute it!')

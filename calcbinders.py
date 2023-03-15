@@ -2,7 +2,7 @@
 
 import numpy as np
 
-Ls = [16,32,64,128,256]
+Ls = [128]#[16,32,64,128,256]
 
 
 
@@ -15,17 +15,17 @@ errbinders = np.empty([len(Ls),len(T)])
         
 for i, L in enumerate(Ls):
     
-    sigmastr = "%0.2f" % 2.50
+    sigmastr = "%0.2f" % 1.88
     sigmafloat = float(sigmastr)
     if L == 256:
-        tests = [0,1,2,4,5,6,7,8,9,10]
+        tests = [0,1,2,4,5,6,7,8,9]
         name = 'taglia256'
     elif L == 64:
         tests = [0,1,2,3,4,5,6,7,9,10,11]
         name = 'q3'
     else:
-        tests = np.arange(12)
-        name = 'q3'
+        tests = [0]
+        name = 'sweep'
 
     binders = np.empty([len(tests),len(T)])
     for j,test in enumerate(tests):
