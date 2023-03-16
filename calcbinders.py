@@ -2,11 +2,13 @@
 
 import numpy as np
 
-Ls = [128]#[16,32,64,128,256]
+Ls = [16,32,64,128,256]
+sigmastr = "%0.2f" % 2.10
+sigmafloat = float(sigmastr)
+tests = np.arange(11)
+name = 'real'
 
-
-
-T = np.load('data/sigma_2.50/simulation_q3/L_128/magnetization/T.npy', allow_pickle=True) #stesse T
+T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_128/magnetization/T.npy', allow_pickle=True) #stesse T
 
 
 meanbinders = np.empty([len(Ls),len(T)])
@@ -15,17 +17,19 @@ errbinders = np.empty([len(Ls),len(T)])
         
 for i, L in enumerate(Ls):
     
-    sigmastr = "%0.2f" % 1.88
-    sigmafloat = float(sigmastr)
+
     if L == 256:
-        tests = [0,1,2,4,5,6,7,8,9]
-        name = 'taglia256'
+        tests = [0,1,2,3,4,5,6,7,9,10]
+        #name = 'taglia256'
     elif L == 64:
-        tests = [0,1,2,3,4,5,6,7,9,10,11]
-        name = 'q3'
+        tests = [1,2,3,4,5,6,7,8,9,10]
+        #name = 'q3'
+    elif L ==128:
+        tests = [0,2,3,4,5,6,7,8,9,10]
+        #name
     else:
-        tests = [0]
-        name = 'sweep'
+        tests = np.arange(11)
+        #name = 'sweep'
 
     binders = np.empty([len(tests),len(T)])
     for j,test in enumerate(tests):

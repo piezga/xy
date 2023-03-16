@@ -7,12 +7,12 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-Ls = [128]
-tests = [0]
+Ls = [16,32,64,128,256]
+tests = np.arange(11)
 
-sigmastr = "%0.2f" % 1.88
+sigmastr = "%0.2f" % 2.10
 sigmafloat = float(sigmastr)
-name = 'sweep'
+name = 'real'
 
 
 T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_128/magnetization/T.npy', allow_pickle=True) #stesse T
@@ -39,7 +39,7 @@ T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_128/magnetization/T.npy'
 
     
 meanbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders.npy')
-# errbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/errbinders.npy')
+errbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/errbinders.npy')
 
 binderplotpath = f'data/sigma_{sigmastr}/simulation_{name}/plots/binders/'
 if not os.path.isdir(binderplotpath):
@@ -48,10 +48,10 @@ if not os.path.isdir(binderplotpath):
 
 plt.figure()
 for i,L in enumerate(Ls):
-    # plt.errorbar(T,meanbinders[i],errbinders[i], label=str(L),marker = '.')
-    plt.plot(meanbinders)
+    plt.errorbar(T,meanbinders[i],errbinders[i], label=str(L),marker = '.')
+    #plt.plot(meanbinders)
     plt.legend()
 
-# plt.savefig(binderplotpath + 'meanbinders.png')
+plt.savefig(binderplotpath + 'meanbinders.png')
 
 # plt.show()
