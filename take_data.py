@@ -26,6 +26,7 @@ for i in range(test):
             and each_file != 'analysis'
             and each_file != 'seeds'
             and each_file != 'last_configuration'
+	    and each_file != 'binder'
             and float(each_file[2:-7]) == round(T[temp],6)
             and each_file[-5] == 'x') :#in this way i'm taking only just one time the data  
               m_T_x.append(np.fromfile(total_path+each_file[:-7]+'_mx.bin',dtype = 'float'))

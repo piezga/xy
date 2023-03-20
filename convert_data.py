@@ -26,13 +26,18 @@ for i in range(test):
             and each_file != 'analysis'
             and each_file != 'seeds'
             and each_file != 'last_configuration'
+	          and each_file != 'binder'
             and float(each_file[2:-7]) == round(T[temp],6)
             and each_file[-5] == 'x') :#in this way i'm taking only just one time the data  
               m_T_x.append(np.fromfile(total_path+each_file[:-7]+'_mx.bin',dtype = 'float'))
               m_T_y.append(np.fromfile(total_path+each_file[:-7]+'_my.bin',dtype = 'float'))
-              os.remove(total_path+each_file[:-7]+'_mx.bin')
-              os.remove(total_path+each_file[:-7]+'_my.bin')
               check_temperature = True
+              try:
+                os.remove(total_path+each_file[:-7]+'_mx.bin')
+                os.remove(total_path+each_file[:-7]+'_my.bin')
+              except:
+                print('No data to remove')
+      
             # print('Data taken! (',total_path+each_file,') shape: ', m_T[-1].shape)
         if not check_temperature:
           temperature_saving = False
@@ -47,7 +52,6 @@ for i in range(test):
       m_T_y = np.array(m_T_y,dtype='object')
       np.save(L_path+'magnetization/'+'mx_test_'+str(i)+'.npy',m_T_x)
       np.save(L_path+'magnetization/'+'my_test_'+str(i)+'.npy',m_T_y)
-      
       
       if temperature_saving:
         np.save(L_path+'magnetization/T.npy',T)

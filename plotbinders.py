@@ -8,14 +8,14 @@ plt.rcParams['figure.dpi'] = 150
 
 
 Ls = [16,32,64,128]
-tests = np.arange(10)
+tests = np.arange(20)
 
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
-name = 'real'
+name = 'low'
 
 
-T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy', allow_pickle=True) #stesse T
+T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_128/magnetization/T.npy', allow_pickle=True) #stesse T
 
 
 
@@ -41,9 +41,9 @@ T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy',
 meanbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders.npy')
 errbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/errbinders.npy')
 
-# binderplotpath = f'data/sigma_{sigmastr}/simulation_{name}/plots/binders/'
-# if not os.path.isdir(binderplotpath):
-#     os.makedirs(binderplotpath)
+binderplotpath = f'data/sigma_{sigmastr}/simulation_{name}/plots/binders/'
+if not os.path.isdir(binderplotpath):
+    os.makedirs(binderplotpath)
 
 
 # plt.figure()
