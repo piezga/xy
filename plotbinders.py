@@ -7,7 +7,7 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-Ls = [16,32,64,128]
+Ls = [16,32,64,128,256,512]
 tests = np.arange(20)
 
 sigmastr = "%0.2f" % 1.80
@@ -78,10 +78,10 @@ def plot_various_T(T,Ls,binders,sigma):
     cbar.ax.set_ylabel('$T$')
 
 
-plot_various_T(T,Ls,np.log(1/meanbinders-1),1.80)
+plot_various_T(T,Ls,np.log10(1/meanbinders-1),1.80)
 
-binderL = np.log(1/meanbinders[:-1] - 1)
-binder2L = np.log(1/meanbinders[1:] - 1)
+binderL = np.log10(1/meanbinders[:-1] - 1)
+binder2L = np.log10(1/meanbinders[1:] - 1)
 derivative = binder2L - binderL
 
 plot_various_T(T,Ls[:-1],derivative,1.80)

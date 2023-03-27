@@ -7,12 +7,12 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-Ls = [512] #[16,32,64,128,256]
-tests = np.arange(10) #scegli il test
-t = 25
-sigmastr = "%0.2f" % 2.50
+Ls = [32] #[16,32,64,128,256]
+tests = [11] #scegli il test
+t = 27
+sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
-name = 'taglia512'
+name = 'low'
 mypath = 'data/sigma_{sigmastr}/simulation_{name}/plots/'   #creo cartella plots
 if not os.path.isdir(mypath):
     os.makedirs(mypath)
