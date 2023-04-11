@@ -1,0 +1,21 @@
+Starting simulation: new and test: 24
+sigma = 1.800000 
+steps = 250000 
+q = 3 
+termalization = 0 
+Temperatures path: ./data/sigma_1.80/simulation_new/
+Sizes file: ./data/sigma_1.80/simulation_new/Ls_test_24.txt
+output path: ./data/sigma_1.80/simulation_new/
+Number of sizes: 1
+Temperatures FILE: ./data/sigma_1.80/simulation_new/L_1024/Ts_test_24.txt
+Number of temperatures: 1
+
+> Seed estratti per i diversi threads: 
+
+	 11351
+before creating lattice
+before seed_file_name
+before file_name_x
+after file_name_x
+Output FILE: ./data/sigma_1.80/simulation_new/L_1024/test_24/T_0.006444_mx.bin
+Output FILE: ./data/sigma_1.80/simulation_new/L_1024/test_24/T_0.006444_my.bin

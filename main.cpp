@@ -218,7 +218,15 @@ Scheme:
       double   magne_x = 0, magne_y = 0;
       string output_file_name_x,output_file_name_y, seed_file_name, configuration_file_name;
       FILE * data_output_file_x, * data_output_file_y, * seed_file, * configuration_file;
-      double lattice[L][L];
+      //double lattice[L][L];
+
+
+    double **   lattice      = new double *  [L] ;
+
+    for(int i=0 ; i<L ; i++){
+        lattice[i]      =   new double [L];
+    }
+
 
       T = Ts[temperature];
       double beta = 1/T;
@@ -230,18 +238,18 @@ Scheme:
       fprintf(seed_file,"%d",seeds[temperature]);
       fclose(seed_file);
 
-    //   // cold start!!
-    //   for (int i = 0; i < L; i++){
-    //      for (int j = 0; j < L; j++){
-    //           lattice[i][j] = 1;
-    //      }
-    //   }
-      //hot start
+      // cold start!!
       for (int i = 0; i < L; i++){
          for (int j = 0; j < L; j++){
-              lattice[i][j] = 2*M_PI*sfmt_genrand_res53(&sfmt) - M_PI;
+              lattice[i][j] = 0;
          }
       }
+      //hot start
+      // for (int i = 0; i < L; i++){
+      //    for (int j = 0; j < L; j++){
+      //         lattice[i][j] = 2*M_PI*sfmt_genrand_res53(&sfmt) - M_PI;
+      //    }
+      // }
 
       output_file_name_x = output_path_name+"L_"+
                           to_string(L)+"/test_"+test+"/T_"+to_string(T)+"_mx.bin";

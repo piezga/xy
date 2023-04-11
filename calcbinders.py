@@ -2,13 +2,13 @@
 
 import numpy as np
 
-Ls = [16,32,64,128,256]
-sigmastr = "%0.2f" % 2.10
+Ls = [1024]
+sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
-tests = np.arange(11)
-name = 'real'
+tests = np.arange(100)
+name = 'new'
 
-T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_128/magnetization/T.npy', allow_pickle=True) #stesse T
+T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_1024/magnetization/T.npy', allow_pickle=True) #stesse T
 
 
 meanbinders = np.empty([len(Ls),len(T)])
@@ -27,8 +27,8 @@ for i, L in enumerate(Ls):
     elif L ==128:
         tests = [0,2,3,4,5,6,7,8,9,10]
         #name
-    else:
-        tests = np.arange(11)
+    #else:
+        #tests = np.arange(11)
         #name = 'sweep'
 
     binders = np.empty([len(tests),len(T)])
@@ -45,13 +45,11 @@ for i, L in enumerate(Ls):
         bindarr = np.array(binder)
         np.save(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/test_{test}/binder',bindarr, allow_pickle=True)
         binders[j] = bindarr
-
-
+        
     meanbinder = binders.mean(axis=0)
     meanbinders[i] = meanbinder
-    errbinders[i] = binders.std(axis=0)/np.sqrt(len(tests)-1)
+    #errbinders[i] = binders.std(axis=0)/np.sqrt(len(tests)-1)
 
 #salva binder separatamente
 np.save(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders',meanbinders, allow_pickle=True)
-np.save(f'data/sigma_{sigmastr}/simulation_{name}/errbinders',errbinders, allow_pickle=True)
-
+#np.save(f'data/sigma_{sigmastr}/simulation_{name}/errbinders',errbinders, allow_pickle=True)

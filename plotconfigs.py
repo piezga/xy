@@ -12,7 +12,7 @@ testnum = 7  #migliora mettendo solo i test desiderati
 sigmastr = "%0.2f" % 2.50
 sigmafloat = float(sigmastr)
 sigmaname = int(sigmafloat*100)
-mypath = 'data/sigma_{sigmastr}/simulation_sigma{sigmaname}/plots/'   #creo cartella plots
+mypath = f'data/sigma_{sigmastr}/simulation_sigma{sigmaname}/plots/'   #creo cartella plots
 if not os.path.isdir(mypath):
     os.makedirs(mypath)
     

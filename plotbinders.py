@@ -39,7 +39,8 @@ T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_128/magnetization/T.npy'
 
     
 meanbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders.npy')
-errbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/errbinders.npy')
+binders1024 = np.load(f'data/sigma_{sigmastr}/simulation_new/meanbinders.npy')
+#errbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/errbinders.npy')
 
 binderplotpath = f'data/sigma_{sigmastr}/simulation_{name}/plots/binders/'
 if not os.path.isdir(binderplotpath):
@@ -84,4 +85,4 @@ binderL = np.log10(1/meanbinders[:-1] - 1)
 binder2L = np.log10(1/meanbinders[1:] - 1)
 derivative = binder2L - binderL
 
-plot_various_T(T,Ls[:-1],derivative,1.80)
+plot_various_T(T[1:2],Ls[:-1],derivative[:,1:2],1.80)

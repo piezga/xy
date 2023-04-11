@@ -1,0 +1,602 @@
+MAKING FILES
+1.8
+Simulation data:  50 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  75 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  76 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  51 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  77 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  52 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  53 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  78 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  54 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  79 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  80 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  55 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  81 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  56 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  82 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  57 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  58 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  83 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  84 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  59 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  85 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  60 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  86 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  61 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  87 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  62 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  88 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  63 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  64 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  89 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  65 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  90 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  66 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  91 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  92 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  67 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  68 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  93 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  69 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  94 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  95 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  70 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  96 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  71 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  72 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  97 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  73 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  98 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  99 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+MAKING FILES
+1.8
+Simulation data:  74 new 1.80 make_files.py
+[1024]
+PATH:  data/sigma_1.80/simulation_new
+NOT created_path 
+NOT created output directory
+NOT created_path L
+NOT created_path L test
+NOT created_path L test seed
+NOT created_path L test seed
+now create Ls file and parameter file
+Submitted batch job 1949916
+Submitted batch job 1949917
