@@ -2,13 +2,13 @@
 
 import numpy as np
 
-Ls = [1024]
+Ls = [16,32,64,128,256]
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
-tests = np.arange(100)
-name = 'new'
+tests = np.arange(20)
+name = 'low'
 
-T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_1024/magnetization/T.npy', allow_pickle=True) #stesse T
+T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy', allow_pickle=True) #stesse T
 
 meanbinders = np.empty([len(Ls),len(T)])
 errbinders = np.empty([len(Ls),len(T)])
@@ -34,8 +34,8 @@ for i, L in enumerate(Ls):
     for j,test in enumerate(tests):
         
 
-        mx = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/amx_test_{test}.npy', allow_pickle=True)[:,-20000:]
-        my = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/amy_test_{test}.npy', allow_pickle=True)[:,-20000:]
+        mx = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)
+        my = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)
         binder = []    
         for t in range(len(T)):
             m2 = mx[t]**2 + my[t]**2

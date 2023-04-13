@@ -7,12 +7,12 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-Ls = [32] #[16,32,64,128,256]
-tests = [11] #scegli il test
-t = 27
+Ls = [1024] #[16,32,64,128,256]
+tests = np.arange(4) #scegli il test
+t = 3
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
-name = 'low'
+name = 'new'
 mypath = 'data/sigma_{sigmastr}/simulation_{name}/plots/'   #creo cartella plots
 if not os.path.isdir(mypath):
     os.makedirs(mypath)
@@ -25,8 +25,8 @@ for L in Ls:
         if not os.path.isdir(Lpath):
             os.makedirs(Lpath)
         
-        mx = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)[t]
-        my = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)[t]
+        mx = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)[t,10000:]
+        my = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)[t,10000:]
         magpath = f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/plots_test_{test}/'
         
         if not os.path.isdir(magpath):

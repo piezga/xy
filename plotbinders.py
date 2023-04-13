@@ -8,14 +8,13 @@ plt.rcParams['figure.dpi'] = 150
 
 
 Ls = [16,32,64,128,256,512]
-tests = np.arange(20)
 
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
 name = 'low'
 
 
-T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_128/magnetization/T.npy', allow_pickle=True) #stesse T
+T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy', allow_pickle=True) #stesse T
 
 
 
@@ -38,9 +37,27 @@ T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_128/magnetization/T.npy'
         
 
     
-meanbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders.npy')
-binders1024 = np.load(f'data/sigma_{sigmastr}/simulation_new/meanbinders.npy')
-#errbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/errbinders.npy')
+binders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders.npy')
+errbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/errbinders.npy')
+
+
+
+
+### selezione delle temperature
+
+indices = [2,3,23,25]
+
+T = [T[i] for i in indices]
+T = np.array([T])
+T = np.resize(T,[4,])
+
+meanbinders = np.empty([len(Ls),len(T)])
+for i, index in enumerate(indices):
+    meanbinders[:,i] = binders[:,index]
+
+
+###
+
 
 binderplotpath = f'data/sigma_{sigmastr}/simulation_{name}/plots/binders/'
 if not os.path.isdir(binderplotpath):
@@ -64,7 +81,7 @@ def plot_various_T(T,Ls,binders,sigma):
     fig.suptitle(str(sigma))
     for i,t in enumerate(T):
         ax.plot(np.log(Ls), binders[:,i],
-                #err_binders[:,i]/(1-binders[:,i]),     #errore giusto                
+                #err_binders[:,i]/(1-binders[:,i]),     #errore giusto                
                 color=cmap(i/len(T)),
                 label=str(t),
                 linestyle = '--', marker='.')
@@ -85,4 +102,4 @@ binderL = np.log10(1/meanbinders[:-1] - 1)
 binder2L = np.log10(1/meanbinders[1:] - 1)
 derivative = binder2L - binderL
 
-plot_various_T(T[1:2],Ls[:-1],derivative[:,1:2],1.80)
+plot_various_T(T,Ls[:-1],derivative,1.80)

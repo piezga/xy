@@ -15,8 +15,22 @@ binderslower[:5,:] = np.load('data/sigma_1.80/simulation_lowzoom/meanbinders.npy
 binderslower[5,:] = np.zeros(len(Tlower))
 meanbinders = np.append(binderslower, binderslow, axis=1)
 
+errlow = np.load('data/sigma_1.80/simulation_low/errbinders.npy')
+errlower = np.load('data/sigma_1.80/simulation_lowzoom/errbinders.npy')
+
+
+
 sortorder = np.argsort(T)
 meanbinders = meanbinders[:,sortorder]
+
+
+# plt.figure()
+# plt.errorbar(Tlow, binderslow, errlow)
+
+# plt.figure()
+# plt.errorbar(Tlower, binderslower, errlower)
+
+
 
 
 def plot_various_T(T,Ls,binders,sigma): 
@@ -25,7 +39,7 @@ def plot_various_T(T,Ls,binders,sigma):
     fig.suptitle(str(sigma))
     for i,t in enumerate(T):
         ax.plot(np.log(Ls), binders[:,i],
-                #err_binders[:,i]/(1-binders[:,i]),     #errore giusto                
+                #err_binders[:,i]/(1-binders[:,i]),     #errore giusto                
                 color=cmap(i/len(T)),
                 label=str(t),
                 linestyle = '--', marker='.')
@@ -40,11 +54,10 @@ def plot_various_T(T,Ls,binders,sigma):
     cbar.ax.set_ylabel('$T$')
 
 
-plot_various_T(T,Ls,np.log10(1/meanbinders-1),1.80)
+#plot_various_T(T,Ls,np.log10(1/meanbinders-1),1.80)
 
 binderL = np.log10(1/meanbinders[:-1] - 1)
 binder2L = np.log10(1/meanbinders[1:] - 1)
 derivative = binder2L - binderL
 
 plot_various_T(T,Ls[:-1],derivative,1.80)
-
