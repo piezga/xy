@@ -9,10 +9,10 @@ plt.rcParams['figure.dpi'] = 150
 
 Ls = [1024] #[16,32,64,128,256]
 tests = np.arange(4) #scegli il test
-t = 3
+t = 0
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
-name = 'new'
+name = 'sim003'
 mypath = 'data/sigma_{sigmastr}/simulation_{name}/plots/'   #creo cartella plots
 if not os.path.isdir(mypath):
     os.makedirs(mypath)

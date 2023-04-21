@@ -4,20 +4,47 @@ import matplotlib.pyplot as plt
 plt.rcParams['figure.dpi'] = 150
 
 sigmastr = "%0.2f" % 1.80
-Ls = [512,1024]
+Ls = [16, 32, 64, 128, 256,1024]
 
-T = [0.001, 0.04637037]
+T = [0.001, 0.002815, 0.00463, 0.042741, 0.04637037]
 T = np.array(T)
 
-binders1024 = np.load(f'data/sigma_{sigmastr}/simulation_new2/meanbinders.npy')
-binders512low = np.load(f'data/sigma_{sigmastr}/simulation_taglia512/meanbinders.npy')
-binders512high = np.load(f'data/sigma_{sigmastr}/simulation_low/meanbinders.npy')[5,25]
+binders256 = np.load(f'data/sigma_{sigmastr}/simulation_riccardo/meanbinders.npy')
 
-meanbinders = np.empty([2,len(T)])
+binders512_001 = np.load(f'data/sigma_{sigmastr}/simulation_taglia512/meanbinders.npy')
+binders512_001 = np.array(binders512_001)
+indices = [2,3,23,25]
+binders512_others = np.empty([1,len(T)-1])
+binderslow = np.load(f'data/sigma_{sigmastr}/simulation_low/meanbinders.npy')
+for i, index in enumerate(indices):
+    binders512_others[0,i] = binderslow[5,index]
+binders512 = np.append(binders512_001,binders512_others, axis=1)
 
-meanbinders[0,0] = binders512low
-meanbinders[0,1] = binders512high
-meanbinders[1,:] = binders1024
+
+
+binders1024_001 = np.load(f'data/sigma_{sigmastr}/simulation_new2/meanbinders.npy')[0,0]
+binders1024_003 = float(np.load(f'data/sigma_{sigmastr}/simulation_sim003/meanbinders.npy'))
+binders1024_005 = float(np.load(f'data/sigma_{sigmastr}/simulation_sim005/meanbinders.npy'))
+binders1024_042 = float(np.load(f'data/sigma_{sigmastr}/simulation_sim042/meanbinders.npy'))
+binders1024_05 = np.load(f'data/sigma_{sigmastr}/simulation_new2/meanbinders.npy')[0,1]
+
+
+binders1024 = [binders1024_001, binders1024_003, binders1024_005, binders1024_042, binders1024_05]
+binders1024 = np.array(binders1024)
+binders1024 = np.resize(binders1024, [1,5])
+
+# meanbinders = np.empty([len(Ls),len(T)])
+# meanbinders[:5,:] = binders256
+# meanbinders[5,:] = binders512
+# meanbinders[6,:] = binders1024
+
+meanbinders = np.empty([len(Ls),len(T)])
+meanbinders[:5,:] = binders256
+#meanbinders[5,:] = binders512
+meanbinders[5,:] = binders1024
+
+
+#meanbinders = meanbinders[:,:-1]
 
 
 def plot_various_T(T,Ls,binders,sigma): 
