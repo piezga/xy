@@ -3,9 +3,9 @@ import numpy as np
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
 tests = np.arange(100)
-name = 'new2'
+name = 'new2_2'
 
-temps =  [0.001, 0.002815, 0.004630, 0.042741, 0.04637037]
+temps =  [0.001, 0.04637037]
 
 path = f'data/sigma_{sigmastr}/simulation_{name}/L_1024/'
 

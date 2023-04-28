@@ -6,9 +6,9 @@ Ls = [1024]
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
 tests = np.arange(100)
-name = 'sim042'
+name = 'new2_2'
 
-T = [0.042741]
+T = [0.001, 0.05]
 #np.save(f'data/sigma_{sigmastr}/simulation_{name}/L_1024/magnetization/T',T, allow_pickle=True)
 
 #T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_1024/magnetization/T.npy', allow_pickle=True) #stesse T
@@ -37,8 +37,8 @@ for i, L in enumerate(Ls):
     for j,test in enumerate(tests):
         
 
-        mx = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)[:,-200000:]
-        my = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)[:,-200000:]
+        mx = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)[:,-170000:]
+        my = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)[:,-170000:]
         binder = []    
         for t in range(len(T)):
             m2 = mx[t]**2 + my[t]**2

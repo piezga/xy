@@ -89,6 +89,7 @@ def plot_various_T(T,Ls,binders,sigma):
         # plt.yscale('log')
         plt.xlabel(r'$\log(L)$')
         plt.ylabel(r'$\log(1/U_2-1)$')
+        plt.legend()
         # Add a colorbar
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=plt.Normalize(vmin=T.min(), vmax=T.max()))
     sm.set_array([])
