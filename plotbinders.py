@@ -7,11 +7,11 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-Ls = [16,32,64,128,256,512]
+Ls = [16,32,64,128,256]
 
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
-name = 'low'
+name = 'real'
 
 
 T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy', allow_pickle=True) #stesse T
@@ -37,21 +37,23 @@ T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy',
         
 
     
-binders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders.npy')
+meanbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders.npy')
 errbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/errbinders.npy')
 
 
 
 
-### selezione delle temperature
+## selezione delle temperature
 
-indices = [2,3,23,25]
+indices = [4,6,8,23,26]
 
 T = [T[i] for i in indices]
 T = np.array([T])
-T = np.resize(T,[4,])
+T = np.resize(T,[len(indices),])
 
+binders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders.npy')
 meanbinders = np.empty([len(Ls),len(T)])
+errbinders = np.zeros([len(Ls),len(T)])
 for i, index in enumerate(indices):
     meanbinders[:,i] = binders[:,index]
 
@@ -59,9 +61,9 @@ for i, index in enumerate(indices):
 ###
 
 
-binderplotpath = f'data/sigma_{sigmastr}/simulation_{name}/plots/binders/'
-if not os.path.isdir(binderplotpath):
-    os.makedirs(binderplotpath)
+# binderplotpath = f'data/sigma_{sigmastr}/simulation_{name}/plots/binders/'
+# if not os.path.isdir(binderplotpath):
+#     os.makedirs(binderplotpath)
 
 
 # plt.figure()
@@ -75,13 +77,14 @@ if not os.path.isdir(binderplotpath):
 # plt.show()
 
 
-def plot_various_T(T,Ls,binders,sigma): 
+
+def plot_various_T(T,Ls,binders,sigma,err): 
     cmap = plt.cm.rainbow
     fig,ax = plt.subplots()
     fig.suptitle(str(sigma))
     for i,t in enumerate(T):
-        ax.plot(np.log(Ls), binders[:,i],
-                #err_binders[:,i]/(1-binders[:,i]),     #errore giusto                
+        ax.errorbar(np.log(Ls), binders[:,i],
+                abs(err[:,i]),               
                 color=cmap(i/len(T)),
                 label=str(t),
                 linestyle = '--', marker='.')
@@ -89,18 +92,23 @@ def plot_various_T(T,Ls,binders,sigma):
         # plt.yscale('log')
         plt.xlabel(r'$\log(L)$')
         plt.ylabel(r'$\log(1/U_2-1)$')
-        plt.legend()
+        #plt.legend()
         # Add a colorbar
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=plt.Normalize(vmin=T.min(), vmax=T.max()))
     sm.set_array([])
     cbar = plt.colorbar(sm)
     cbar.ax.set_ylabel('$T$')
 
+errplot = errbinders/(meanbinders**2-meanbinders)
 
-plot_various_T(T,Ls,np.log10(1/meanbinders-1),1.80)
+plot_various_T(T,Ls,np.log10(1/meanbinders-1),1.80,errplot)
 
 binderL = np.log10(1/meanbinders[:-1] - 1)
 binder2L = np.log10(1/meanbinders[1:] - 1)
 derivative = binder2L - binderL
 
-plot_various_T(T,Ls[:-1],derivative,1.80)
+errL = errplot[:-1]
+err2L = errplot[1:]
+errderivative = err2L + errL
+
+plot_various_T(T,Ls[:-1],derivative,1.80,errderivative)
