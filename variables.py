@@ -11,7 +11,7 @@ d = 2
 test = 100
 #=======
 #>>>>>>> 18727f042f4324a7999e73f9637258f5fd1add35
-simulation = 'new2_2'
+simulation = 'real_1'
 
 sigma = '1.80'
 
