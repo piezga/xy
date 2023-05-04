@@ -162,7 +162,7 @@ np.save(f'data/sigma_{sigmastr}/simulation_binders/errbinders.npy', errbinders, 
 np.save(f'data/sigma_{sigmastr}/simulation_binders/L_1024/magnetization/T.npy',T, allow_pickle=True)
 
 
-
+errbinders = np.ones((7,10))*10**(-12)
 
 
 def plot_various_T(T,Ls,binders,sigma,err,x_label, y_label): 
