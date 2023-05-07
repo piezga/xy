@@ -29,8 +29,8 @@ for i in range(test):
             and each_file != 'binder.npy'
             and float(each_file[2:-7]) == round(T[temp],6)
             and each_file[-5] == 'x') :#in this way i'm taking only just one time the data  
-              m_T_x.append(np.fromfile(total_path+each_file[:-7]+'_mx.bin',dtype = 'float')[:170000])
-              m_T_y.append(np.fromfile(total_path+each_file[:-7]+'_my.bin',dtype = 'float')[:170000])
+              m_T_x.append(np.fromfile(total_path+each_file[:-7]+'_mx.bin',dtype = 'float')[-98000:])
+              m_T_y.append(np.fromfile(total_path+each_file[:-7]+'_my.bin',dtype = 'float')[-98000:])
               check_temperature = True
             # print('Data taken! (',total_path+each_file,') shape: ', m_T[-1].shape)
         if not check_temperature:
@@ -44,8 +44,8 @@ for i in range(test):
     if len(m_T_x) > 0:
       m_T_x = np.array(m_T_x,dtype='object')
       m_T_y = np.array(m_T_y,dtype='object')
-      np.save(L_path+'magnetization/'+'bismx_test_'+str(i)+'.npy',m_T_x)
-      np.save(L_path+'magnetization/'+'bismy_test_'+str(i)+'.npy',m_T_y)
+      np.save(L_path+'magnetization/'+'mx_test_'+str(i)+ '_T_0.69.npy',m_T_x)
+      np.save(L_path+'magnetization/'+'my_test_'+str(i)+ '_T_0.69.npy',m_T_y)
       
       if temperature_saving:
         np.save(L_path+'magnetization/Tbis.npy',T)
