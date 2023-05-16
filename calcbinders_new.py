@@ -6,14 +6,14 @@ Ls = [1024]
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
 tests = np.arange(100)
-name = 'real_1'
+name = 'sim005_1'
 
 #T = [0.17148148, 0.25222222, 0.33296296, 0.93851852, 1.05962963]
 #T = np.array(T)
 #np.save(f'data/sigma_{sigmastr}/simulation_{name}/L_1024/magnetization/T',T, allow_pickle=True)
 
 #T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy', allow_pickle=True) #stesse T
-T = np.arange(5)
+T = np.arange(1)
 
 meanbinders_new = np.empty([len(Ls),len(T)])
 errbinders_new = np.empty([len(Ls),len(T)])

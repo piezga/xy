@@ -23,9 +23,9 @@ binders512_low = np.load(f'data/sigma_{sigmastr}/simulation_low_512_analyzed/mea
 
 
 binders1024_001 = np.load(f'data/sigma_{sigmastr}/simulation_new2_2/meanbinders_new.npy')[0,0]
-binders1024_003 = float(np.load(f'data/sigma_{sigmastr}/simulation_sim003_1/meanbinders_new.npy'))
+binders1024_003 = float(np.load(f'data/sigma_{sigmastr}/simulation_sim003_2/meanbinders_new.npy'))   #qui
 binders1024_005 = float(np.load(f'data/sigma_{sigmastr}/simulation_sim005_1/meanbinders_new.npy'))
-binders1024_042 = float(np.load(f'data/sigma_{sigmastr}/simulation_sim042_1/meanbinders_new.npy'))
+binders1024_042 = float(np.load(f'data/sigma_{sigmastr}/simulation_sim042_2/meanbinders_new.npy'))
 binders1024_05 = np.load(f'data/sigma_{sigmastr}/simulation_new2_2/meanbinders_new.npy')[0,1]
 
 
@@ -71,57 +71,6 @@ errbinders_low = errbinders
 
 
 
-T = [0.49444444, 0.57518519, 0.6962963, 0.77703704, 0.85777778]
-T = np.array(T)
-
-
-binders256_mid = np.load(f'data/sigma_{sigmastr}/simulation_real/meanbinders_new.npy')
-
-indices = [12,14,17,19,21]
-
-meanbinders = np.empty([len(Ls),len(T)])
-for i, index in enumerate(indices):
-    meanbinders[:5,i] = binders256_mid[:,index]
-
-######
-# binders512_001 = np.load(f'data/sigma_{sigmastr}/simulation_taglia512/meanbinders_new.npy')
-# binders512_001 = np.array(binders512_001)
-# indices = [2,3,23,25]
-# binders512_others = np.empty([1,len(T)-1])
-# binderslow = np.load(f'data/sigma_{sigmastr}/simulation_low/meanbinders_new.npy')
-# for i, index in enumerate(indices):
-#     binders512_others[0,i] = binderslow[5,index]
-binders512_mid = np.load(f'data/sigma_{sigmastr}/simulation_binders_049_085/meanbinders_new.npy')
-
-
-
-# binders1024_001 = np.load(f'data/sigma_{sigmastr}/simulation_new2_2/meanbinders_new.npy')[0,0]
-# binders1024_003 = float(np.load(f'data/sigma_{sigmastr}/simulation_sim003_1/meanbinders_new.npy'))
-# binders1024_00= float(np.load(f'data/sigma_{sigmastr}/simulation_sim005_1/meanbinders_new.npy'))
-# binders1024_042 = float(np.load(f'data/sigma_{sigmastr}/simulation_sim042_1/meanbinders_new.npy'))
-# binders1024_05 = np.load(f'data/sigma_{sigmastr}/simulation_new2_2/meanbinders_new.npy')[0,1]
-
-
-# binders1024 = [binders1024_001, binders1024_003, binders1024_005, binders1024_042, binders1024_05]
-# binders1024 = np.array(binders1024)
-binders1024_mid = np.load(f'data/sigma_{sigmastr}/simulation_real_1/meanbinders_new.npy')
-binders1024_mid = np.empty((1,len(T)))
-
-
-#meanbinders[:5,:] = binders256_high
-meanbinders[5,:] = binders512_mid
-meanbinders[6,:] = binders1024_mid
-
-meanbinders_mid = meanbinders
-
-
-
-
-
-
-
-
-
 
 
 
@@ -161,11 +110,12 @@ binders512_high = np.load(f'data/sigma_{sigmastr}/simulation_high_512_analyzed/m
 # binders1024 = [binders1024_001, binders1024_003, binders1024_005, binders1024_042, binders1024_05]
 # binders1024 = np.array(binders1024)
 binders1024_high = np.load(f'data/sigma_{sigmastr}/simulation_real_1/meanbinders_new.npy')
-
+binders1024_025 = np.load(f'data/sigma_{sigmastr}/simulation_simT025_2/meanbinders_new.npy') 
 
 #meanbinders[:5,:] = binders256_high
 meanbinders[5,:] = binders512_high
 meanbinders[6,:] = binders1024_high
+meanbinders[6,1] = binders1024_025                     #qui
 
 meanbinders_high = meanbinders
 
@@ -207,20 +157,25 @@ errbinders_high = errbinders
 
 
 
-T = [0.001, 0.002815, 0.00463, 0.042741, 0.04637037, 0.17148148, 0.25222222, 0.33296296, 0.93851852, 
-     1.05962963, 0.49444444, 0.57518519, 0.6962963, 0.77703704, 0.85777778]
-T = np.array(T)
-T = np.sort(T)
+# T = [0.001, 0.002815, 0.00463, 0.042741, 0.04637037, 0.17148148, 0.25222222, 0.33296296, 0.93851852, 
+#      1.05962963, 0.49444444, 0.57518519, 0.6962963, 0.77703704, 0.85777778]
+# T = np.array(T)
+# T = np.sort(T)
 
-meanbinders = np.concatenate((meanbinders_low,meanbinders_mid),axis=1)
-meanbinders = np.concatenate((meanbinders,meanbinders_high),axis=1)
+meanbinders = np.concatenate((meanbinders_low,meanbinders_high),axis=1)
+#meanbinders = np.concatenate((meanbinders,meanbinders_high),axis=1)
 # errbinders = np.concatenate((errbinders_low,errbinders_mid),axis=1)
 # errbinders = np.concatenate((errbinders,errbinders_high),axis=1)
-# np.save(f'data/sigma_{sigmastr}/simulation_binders/meanbinders_new.npy', meanbinders, allow_pickle=True)
+np.save(f'data/sigma_{sigmastr}/simulation_binders/meanbinders_new_1.npy', meanbinders, allow_pickle=True)
 # np.save(f'data/sigma_{sigmastr}/simulation_binders/errbinders_new.npy', errbinders, allow_pickle=True)
-# np.save(f'data/sigma_{sigmastr}/simulation_binders/L_1024/magnetization/T.npy',T, allow_pickle=True)
+np.save(f'data/sigma_{sigmastr}/simulation_binders/L_1024/magnetization/T.npy',T, allow_pickle=True)
 
-errbinders = np.ones((7,15))*10**(-12)
+errbinders = np.ones((7,10))*10**(-12)
+
+
+
+T = [0.001, 0.002815, 0.00463, 0.042741, 0.04637037, 0.17148148, 0.25222222, 0.33296296]
+T = np.array(T)
 
 
 
@@ -257,6 +212,6 @@ errL = errplot[:-1]
 err2L = errplot[1:]
 errderivative = err2L + errL
 
-errderivative = np.ones((6,15))*10**(-12)
+errderivative = np.ones((6,10))*10**(-12)
 
 plot_various_T(T,Ls[:-1],derivative,1.80,errderivative,'Log(L)', r'$d_L (\log(1/U_2-1)$)')
