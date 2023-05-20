@@ -142,7 +142,7 @@ np.save(f'data/sigma_{sigmastr}/simulation_binders/L_1024/magnetization/T.npy',T
 
 
 
-
+""" 
 def plot_various_T(T,Ls,binders,sigma,err,x_label, y_label): 
     cmap = plt.cm.rainbow
     fig,ax = plt.subplots()
@@ -183,4 +183,4 @@ errderivative = err2L + errL
 
 plot_various_T(T,Ls[:-1],derivative,1.80,errderivative,'Log(L)', r'$d_L (\log(1/U_2-1)$)')
 
-plt.show()
+plt.show() """

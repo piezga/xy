@@ -11,7 +11,9 @@ Ls = [1024]
 tests = np.arange(100)  #scegli il test
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
-sigmaname = '049_085'
+sigmaname = 'simT003_2'
+npoints = 150000
+
 mypath = 'data/sigma_{sigmastr}/simulation_sigma{sigmaname}/plots/'   #creo cartella plots
 if not os.path.isdir(mypath):
     os.makedirs(mypath)
@@ -21,14 +23,14 @@ for L in Ls:
     #T = np.load(f'data/sigma_{sigmastr}/simulation_{sigmaname}/L_{L}/magnetization/T.npy', allow_pickle=True)
 
     Lpath = f'data/sigma_{sigmastr}/simulation_sigma{sigmaname}/plots/L_{L}/' 
-    if not os.path.isdir(Lpath):
-        os.makedirs(Lpath)
+    # if not os.path.isdir(Lpath):
+    #     os.makedirs(Lpath)
         
-    mag = np.empty([len(tests),98000])
+    mag = np.empty([len(tests),npoints])
 
     for test in tests:
-        mx = np.load(f'data/sigma_{sigmastr}/simulation_{sigmaname}/L_{L}/magnetization/mx_test_{test}_T_0.85.npy', allow_pickle=True)
-        my = np.load(f'data/sigma_{sigmastr}/simulation_{sigmaname}/L_{L}/magnetization/my_test_{test}_T_0.85.npy', allow_pickle=True)
+        mx = np.load(f'data/sigma_{sigmastr}/simulation_{sigmaname}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)[:,-npoints:]
+        my = np.load(f'data/sigma_{sigmastr}/simulation_{sigmaname}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)[:,-npoints:]
         mag[test]= mx**2 + my**2
 
         # plt.figure(8)
@@ -40,20 +42,8 @@ for L in Ls:
     plt.figure()
     plt.errorbar(range(len(meanmag)),meanmag,magerror)
     
-    # magpath = f'data/sigma_{sigmastr}/simulation_{sigmaname}/L_{L}/magnetization/plots_test_{test}/'
-    # if not os.path.isdir(magpath):
-    #     os.makedirs(magpath)
-    # for t in range(len(T)):
-    #     fig, ax = plt.subplots()
-    #     ax.plot(mx[t])
-    #     ax.set(xlabel = 'timestep', ylabel = 'mx', title = 'T = ' + str(T[t]))
-    #     ax.grid()
-        # plt.savefig(magpath + f'T_{t}_' + str(T[t]) + '.png')
-        # plt.close()
-        # plt.figure()
-        # plt.scatter(mx[t],my[t])
-        # plt.savefig(magpath + f'scatterT_{t}_' + str(T[t]) + '.png')
-    
+
+plt.show()
 
         
         
