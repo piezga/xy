@@ -16,7 +16,7 @@ binders512_low = np.load(f'data/sigma_{sigmastr}/simulation_low_512_analyzed/mea
 Triccardo512low = np.load(f'data/sigma_{sigmastr}/simulation_low_512_analyzed/T.npy')
 
 binders1024_001 = float(np.load(f'data/sigma_{sigmastr}/simulation_simT0001_1/meanbinders_new.npy')) #ex new2
-binders1024_003 = float(np.load(f'data/sigma_{sigmastr}/simulation_simT003_1/meanbinders_new.npy'))
+binders1024_003 = float(np.load(f'data/sigma_{sigmastr}/simulation_simT003_total/meanbinders_new.npy'))
 binders1024_005 = float(np.load(f'data/sigma_{sigmastr}/simulation_simT005_1/meanbinders_new.npy'))
 binders1024_042 = float(np.load(f'data/sigma_{sigmastr}/simulation_simT042_total/meanbinders_new.npy'))
 binders1024_05 = float(np.load(f'data/sigma_{sigmastr}/simulation_simT05_1/meanbinders_new.npy'))

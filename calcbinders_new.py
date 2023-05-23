@@ -2,18 +2,18 @@
 
 import numpy as np
 
-Ls = [1024]
-sigmastr = "%0.2f" % 1.80
+Ls = [16,32,64,128,256]
+sigmastr = "%0.2f" % 2.50
 sigmafloat = float(sigmastr)
-tests = np.arange(100)
-name = 'simT005_1'
+tests = np.arange(15)
+name = 'sigma250'
 
 #T = [0.17148148, 0.25222222, 0.33296296, 0.93851852, 1.05962963]
 #T = np.array(T)
 #np.save(f'data/sigma_{sigmastr}/simulation_{name}/L_1024/magnetization/T',T, allow_pickle=True)
 
 #T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy', allow_pickle=True) #stesse T
-T = np.arange(1)
+T = np.arange(28)
 
 
 def covariance(A, B, mean_A, mean_B):
@@ -60,8 +60,8 @@ for i, L in enumerate(Ls):
         m4s= []
         dm2s = []
         dm4s = []
-        mx = np.load(f'data/sigma_1.80/simulation_{name}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)
-        my = np.load(f'data/sigma_1.80/simulation_{name}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)
+        mx = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)
+        my = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)
         for t in range(len(T)):
             m2 = mx[t]**2 + my[t]**2
             m4 = m2**2

@@ -11,7 +11,7 @@ Ls = [1024]
 tests = np.arange(100)  #scegli il test
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
-sigmaname = 'simT003_2'
+sigmaname = 'simT085_0'
 npoints = 150000
 
 mypath = 'data/sigma_{sigmastr}/simulation_sigma{sigmaname}/plots/'   #creo cartella plots

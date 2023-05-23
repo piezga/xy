@@ -11,7 +11,7 @@ d = 2
 test = 100
 #=======
 #>>>>>>> 18727f042f4324a7999e73f9637258f5fd1add35
-simulation = 'simT003_2'
+simulation = 'simT077_0'
 
 sigma = '1.80'
 

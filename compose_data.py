@@ -6,7 +6,7 @@ sigmastr = "%0.2f" % 1.80
 L = 1024
 tests = np.arange(100)
 sims = np.arange(2) + 1
-name = 'sim042'
+name = 'simT003'
 sim_length = 150000 
 
 path_total = f'data/sigma_{sigmastr}/simulation_{name}_total/L_{L}/magnetization'
