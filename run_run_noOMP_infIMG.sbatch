@@ -5,13 +5,12 @@
 #SBATCH --mail-type=BEGIN
 #SBATCH --time=0-00:10:00
 
-actual_T=1.2
-
+actual_T=1.78
 
 first_test=0
 last_test=99
-simulation=simT12
-sigma=2.50
+simulation=T178
+sigma=0.75
 num_temperatures=0
 
 num_tests=$(( $last_test - $first_test + 1))
@@ -35,6 +34,6 @@ conda deactivate
 for T_idx in $(eval echo "{0..$num_temperatures}")
 do
 
-   sbatch  --job-name=outs/${sigma}_lastTest_${last_test}_sim_${simulation}_T_${actual_T}     run_noOMP_bis.sbatch $sigma $first_test $last_test $simulation $actual_T
+   sbatch  --job-name=outs/${sigma}_lastTest_${last_test}_sim_${simulation}_T_${actual_T}     run_noOMP_infIMG.sbatch $sigma $first_test $last_test $simulation $actual_T
 
 done

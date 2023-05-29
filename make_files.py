@@ -5,8 +5,8 @@ import sys
 print('MAKING FILES')
 
 
-steps = 250*10**3
-termalization = 0
+steps = 5*10**5
+termalization = 2*10**4
 
 d = 2
 
@@ -34,10 +34,12 @@ print('Simulation data: ',test, simulation, sigma , make_T_file)
 parameters = [float(sigma),3,steps,termalization]
 
 
-Ls = np.array([1024])
+Ls = np.array([16,32,64,128,256])
 print(Ls)
 
 numT = 1
+temp1 = 1.78
+temp2 = 1
 
 
    
@@ -48,11 +50,11 @@ T = {
 362 :np.linspace(  1.70755791 , 1.716  ,numT),
 724 :np.linspace( 1.658 , 1.67  ,numT),
 
-16 :np.linspace(0.001 , 0.05,numT),
-32 :np.linspace( 0.001 , 0.05 ,numT),
-64 :np.linspace( 0.001 , 0.05,numT),
-128 :np.linspace(  0.001, 0.05 ,numT),
-256 :np.linspace(  0.001, 0.05,numT),
+16 :np.linspace(temp1, temp2,numT),
+32 :np.linspace(temp1, temp2,numT),
+64 :np.linspace(temp1, temp2,numT),
+128 :np.linspace(temp1, temp2,numT),
+256 :np.linspace(temp1, temp2,numT),
 512 :np.linspace(   0.001 , 0.05,numT),
 750 :np.linspace( 0.1 , 5,numT),
 999:np.linspace( 0.0031111 , 5 ,numT),

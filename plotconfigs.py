@@ -7,8 +7,8 @@ import os
 
 plt.rcParams['figure.dpi'] = 150
 
-Ls = [128]  #[16,32,64,128,256]
-testnum = 7  #migliora mettendo solo i test desiderati
+Ls = [256]  #[16,32,64,128,256]
+testnum = 15  #migliora mettendo solo i test desiderati
 sigmastr = "%0.2f" % 2.50
 sigmafloat = float(sigmastr)
 sigmaname = int(sigmafloat*100)

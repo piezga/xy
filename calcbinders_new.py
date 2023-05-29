@@ -3,17 +3,17 @@
 import numpy as np
 
 Ls = [16,32,64,128,256]
-sigmastr = "%0.2f" % 2.50
+sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
-tests = np.arange(15)
-name = 'sigma250'
+tests = np.arange(20)
+name = 'sweep_2_infIMG'
 
 #T = [0.17148148, 0.25222222, 0.33296296, 0.93851852, 1.05962963]
 #T = np.array(T)
 #np.save(f'data/sigma_{sigmastr}/simulation_{name}/L_1024/magnetization/T',T, allow_pickle=True)
 
 #T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy', allow_pickle=True) #stesse T
-T = np.arange(28)
+T = np.arange(10)
 
 
 def covariance(A, B, mean_A, mean_B):

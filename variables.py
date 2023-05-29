@@ -8,10 +8,10 @@ g_drive_dir = ''#G:/Other computers/principal/Università/DOTTORATO/Codes/dll/'
 
 d = 2
 #<<<<<<< HEAD
-test = 100
+test = 20
 #=======
 #>>>>>>> 18727f042f4324a7999e73f9637258f5fd1add35
-simulation = 'simT077_0'
+simulation = 'sweep_2_infIMG'
 
 sigma = '1.80'
 
@@ -29,7 +29,7 @@ path = data_path+'simulation_'+str(simulation)#+'/old/'
 print('simulation: ', simulation)
 print('SIGMA: ', sigma)
 
-Ls_chosen = np.array([1024])#16,32,45,64,90,128,181,256,362,512,750 #45,90,181,362
+Ls_chosen = np.array([16,32,64,128,256])#16,32,45,64,90,128,181,256,362,512,750 #45,90,181,362
 #16,32,64,128,256,512,45,90,181,362,724
 if d == 1:
     Ls_chosen = np.array([512,1024,2048,4096,8192,16384,32768])#,8192,16384,32768,65536

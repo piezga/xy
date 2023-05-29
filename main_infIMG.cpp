@@ -22,8 +22,6 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 
-  bool already_termalized = false;//true; per fare partire dall'ultima configurazione...Attento:metti a zero la termalizzazione nel make_file
-
 /*
 argc is the argument counter
 argv is the string array containing all the arguments passed after the .out.
@@ -267,35 +265,6 @@ Scheme:
 
       //int count = 0;
       //TERMALIZATION
-      if (already_termalized){
-	
-	printf("already termalized \n");
-  	fflush(stdout);
-
-        configuration_file_name = output_path_name+"L_"+to_string(L)+"/test_"+test+
-                        "/last_configuration/T_"+to_string(T)+".bin";
-        configuration_file = fopen(configuration_file_name.c_str(), "rb");
-        //double flatten_lattice[L*L];
-        double *   flatten_lattice      = new double   [L*L] ;
-        fread(flatten_lattice,sizeof(double), L*L, configuration_file);
-        for (int i = 0; i < L; i++){
-          for (int j = 0; j < L; j++){
-            lattice[i][j] = flatten_lattice[i*L+j];
-
-          }
-
-        }
-        fclose(configuration_file);
-	printf("flatten_lattice \n");
-	fflush(stdout);
-	
-
-
-
-      }
-
-
-
       for (int termo = 0; termo < termalization; termo++){
 
 
@@ -309,14 +278,15 @@ Scheme:
           for (int j = 0; j < q; j++){
               unif = 1-sfmt_genrand_res53(&sfmt);
               r  = lower*exp(alpha*log(unif));//lower*pow(unif,alpha);
-              if (r <= (int) L/2){
+              
                 unif = sfmt_genrand_res53(&sfmt);
                 theta = unif*(2*M_PI);
-                neigh_theta = lattice[(center_x+(int)round(r*cos(theta))+L)%L]
-                                    [(center_y+(int)round(r*sin(theta))+L)%L];
+                     
+                neigh_theta = lattice[((center_x+(int)round(r*cos(theta)))%L + L )%L]
+                                    [((center_y+(int)round(r*sin(theta)))%L+L)%L];
                 Sq_x += cos(neigh_theta);
                 Sq_y += sin(neigh_theta);
-              }
+              
           }
 
 
@@ -337,9 +307,9 @@ Scheme:
               while ((new_theta < -M_PI) || (new_theta > M_PI)){
                 U = 1-sfmt_genrand_res53(&sfmt);
                 V = 1-sfmt_genrand_res53(&sfmt);
-                new_theta = sqrt(-2*log(U))*cos(2*M_PI*V);
+                new_theta = sqrt(-2*log(U))*cos(2*M_PI*V)*(M_PI/2)*(1/sqrt(energy));
                 if ((new_theta < -M_PI) || (new_theta > M_PI)){
-                  new_theta = sqrt(-2*log(U))*sin(2*M_PI*V);
+                  new_theta = sqrt(-2*log(U))*sin(2*M_PI*V)*(M_PI/2)*(1/sqrt(energy));
                 }
               }
               //Acceptance step
@@ -394,14 +364,14 @@ printf("END OF TERMALIZATION for thread:%d\n", temperature);
           for (int j = 0; j < q; j++){
               unif = 1-sfmt_genrand_res53(&sfmt);
               r  = lower*exp(alpha*log(unif));//lower*pow(unif,alpha);
-              if (r <= (int) L/2){
+              
                 unif = sfmt_genrand_res53(&sfmt);
                 theta = unif*(2*M_PI);
-                neigh_theta = lattice[(center_x+(int)round(r*cos(theta))+L)%L]
-                                    [(center_y+(int)round(r*sin(theta))+L)%L];
+                neigh_theta = lattice[((center_x+(int)round(r*cos(theta)))%L + L )%L]
+                                    [((center_y+(int)round(r*sin(theta)))%L+L)%L];
                 Sq_x += cos(neigh_theta);
                 Sq_y += sin(neigh_theta);
-              }
+              
           }
 
           Sq = sqrt(pow(Sq_x,2) + pow(Sq_y,2));
@@ -419,9 +389,9 @@ printf("END OF TERMALIZATION for thread:%d\n", temperature);
               while ((new_theta < -M_PI) || (new_theta > M_PI)){
                 U = 1-sfmt_genrand_res53(&sfmt);
                 V = 1-sfmt_genrand_res53(&sfmt);
-                new_theta = sqrt(-2*log(U))*cos(2*M_PI*V);
+                new_theta = sqrt(-2*log(U))*cos(2*M_PI*V)*(M_PI/2)*(1/sqrt(energy));
                 if ((new_theta < -M_PI) || (new_theta > M_PI)){
-                  new_theta = sqrt(-2*log(U))*sin(2*M_PI*V);
+                  new_theta = sqrt(-2*log(U))*sin(2*M_PI*V)*(M_PI/2)*(1/sqrt(energy));
                 }
               }
               //Acceptance step
@@ -473,26 +443,6 @@ printf("END OF TERMALIZATION for thread:%d\n", temperature);
 
         fwrite(&magne_x,sizeof(double), 1, data_output_file_x);
         fwrite(&magne_y,sizeof(double), 1, data_output_file_y);
-
-
-        if (step == 150000){
-          configuration_file_name = output_path_name+"L_"+to_string(L)+"/test_"+test+
-                        "/last_configuration/T_"+to_string(T)+".bin";
-          configuration_file = fopen(configuration_file_name.c_str(), "wb");
-          for (int k = 0; k < L; k++){
-            for (int l = 0; l < L; l++){
-                    fwrite(&lattice[k][l],sizeof(double), 1, configuration_file);
-
-              }
-
-          }
-
-          fclose( configuration_file);
-          
-        }
-
-      
-
       }
       //free( my_buffer );
       fclose( data_output_file_x );

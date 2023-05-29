@@ -3,10 +3,11 @@ import matplotlib.pyplot as plt
 
 plt.rcParams['figure.dpi'] = 150
 
-sigmastr = "%0.2f" % 2.50
-Ls = [16, 32, 64, 128, 256]
-max_temp = 15
-name = 'sigma250'
+sigmastr = "%0.2f" % 1.80
+Ls = [16, 32, 64, 128,256,512,1024]
+min_temp = 0
+max_temp = 40
+name = 'binders'
 
 
 """ T = np.load(f'data/sigma_{sigmastr}/simulation_binders/L_1024/magnetization/T.npy')[:max_temp]
@@ -14,11 +15,14 @@ meanbinders = np.load(f'data/sigma_{sigmastr}/simulation_binders/meanbinders_new
 errbinders = np.load(f'data/sigma_{sigmastr}/simulation_binders/errbinders_new.npy')[:,:max_temp]
  """
 
-T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy')[:max_temp]
-meanbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders_new.npy')[:,:max_temp]
-errbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/errbinders_new.npy')[:,:max_temp]
-#errbinders = np.ones((5,28))*10**(-12)
+T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy')[min_temp:max_temp]
+meanbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders_new.npy')[:,min_temp:max_temp]
+errbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/errbinders_new.npy')[:,min_temp:max_temp]
+#errbinders = np.ones((len(L),maxtemp))*10**(-12)
 
+
+#print(len(T))
+print(T)
 
 
 def plot_various_T(T,Ls,binders,sigma,err,x_label, y_label): 
@@ -46,7 +50,7 @@ def plot_various_T(T,Ls,binders,sigma,err,x_label, y_label):
 errplot = errbinders/(meanbinders**2-meanbinders)
 
 
-plot_various_T(T,Ls,np.log10(1/meanbinders-1),2.50,errplot, 'Log(L)', r'$\log(1/U_2-1)$')
+plot_various_T(T,Ls,np.log10(1/meanbinders-1),sigmastr,errplot, 'Log(L)', r'$\log(1/U_2-1)$')
 
 binderL = np.log10(1/meanbinders[:-1] - 1)
 binder2L = np.log10(1/meanbinders[1:] - 1)
@@ -59,7 +63,7 @@ errderivative = err2L + errL
 #errderivative = np.ones((4,28))*10**(-12)
 
 
-plot_various_T(T,Ls[:-1],derivative,2.50,errderivative,'Log(L)', r'$d_L (\log(1/U_2-1)$)')
+plot_various_T(T,Ls[:-1],derivative,sigmastr,errderivative,'Log(L)', r'$d_L (\log(1/U_2-1)$)')
 
 plt.show() 
 
