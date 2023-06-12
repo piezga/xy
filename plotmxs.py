@@ -7,11 +7,11 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-Ls = [1024]
-tests = np.arange(100)  
+Ls = [128]
+tests = np.arange(20)  
 sigmastr = "%0.2f" % 1.80
 sigmafloat = float(sigmastr)
-sigmaname = 'simT003_0_bis'
+sigmaname = 'real'
 npoints = 150*10**3
 temperature_index = 0
 mypath = 'data/sigma_{sigmastr}/simulation_sigma{sigmaname}/plots/'   #creo cartella plots

@@ -7,12 +7,11 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-Ls = [1024] #[16,32,64,128,256]
-tests = np.arange(4) #scegli il test
+Ls = [128] #[16,32,64,128,256]
+tests = [3] #scegli il test
 t = 0
-sigmastr = "%0.2f" % 1.80
-sigmafloat = float(sigmastr)
-name = 'real_1'
+sigmastr = "%0.2f_infIMG" % 1.80
+name = 'T067'
 mypath = 'data/sigma_{sigmastr}/simulation_{name}/plots/'   #creo cartella plots
 if not os.path.isdir(mypath):
     os.makedirs(mypath)
@@ -40,11 +39,14 @@ for L in Ls:
         
         m2 = mx**2 + my**2
         
-        plt.figure(i+1)
-        plt.scatter(mx,my, label = str(test) + ' temp ' + str(T[t]))
-        plt.legend()
-        # plt.plot(m2, label = str(test))
-        # plt.legend()        
+        # plt.figure(i+1)
+        # plt.scatter(mx,my, label = str(test) + ' temp ' + str(T[t]))
+        # plt.legend()
+        plt.figure()
+        plt.xlabel('Timestep')
+        plt.ylabel('Magnetization')
+        plt.plot(m2, label = 'Test ' + str(test))
+        plt.legend()        
         
     
     

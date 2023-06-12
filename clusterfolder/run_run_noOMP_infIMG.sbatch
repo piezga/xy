@@ -5,11 +5,11 @@
 #SBATCH --mail-type=BEGIN
 #SBATCH --time=0-00:10:00
 
-actual_T=1.78
+actual_T=0.32
 
 first_test=0
 last_test=99
-simulation=T178
+simulation=T032
 sigma=0.75
 num_temperatures=0
 

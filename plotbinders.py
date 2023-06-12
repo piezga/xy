@@ -7,14 +7,14 @@ import os
 plt.rcParams['figure.dpi'] = 150
 
 
-Ls = [16,32,64,128]
+Ls = [16,32,64,128,256]
 
-sigmastr = "%0.2f" % 1.80
-sigmafloat = float(sigmastr)
-name = 'sweep_infIMG'
+sigmavalue = 1.80
+sigmastr = "%0.2f" % sigmavalue
+name = 'real'
 
 
-T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy', allow_pickle=True) #stesse T
+T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy', allow_pickle=True)[1:] #stesse T
     
 meanbinders = np.load(f'data/sigma_{sigmastr}/simulation_{name}/meanbinders_new.npy')
 
@@ -47,9 +47,11 @@ if not os.path.isdir(binderplotpath):
 
 plt.figure()
 for i,L in enumerate(Ls):
-    plt.plot(T,meanbinders[i], label=str(L),marker = '.')
+    plt.plot(T,meanbinders[i], label= 'L ' + str(L),marker = '.')
     plt.legend()
 
+plt.xlabel('Temperature')
+plt.ylabel('B(T)')
 plt.savefig(binderplotpath + 'meanbinders.png')
 
 plt.show()

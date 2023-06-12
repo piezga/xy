@@ -38,7 +38,7 @@ Ls = np.array([16,32,64,128,256])
 print(Ls)
 
 numT = 1
-temp1 = 1.78
+temp1 = 0.32
 temp2 = 1
 
 
@@ -55,7 +55,7 @@ T = {
 64 :np.linspace(temp1, temp2,numT),
 128 :np.linspace(temp1, temp2,numT),
 256 :np.linspace(temp1, temp2,numT),
-512 :np.linspace(   0.001 , 0.05,numT),
+512 :np.linspace(temp1 , temp2,numT),
 750 :np.linspace( 0.1 , 5,numT),
 999:np.linspace( 0.0031111 , 5 ,numT),
 1000:np.linspace( 0.0031111 , 5 ,numT),

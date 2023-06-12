@@ -3,17 +3,16 @@ import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
 
-sigmastr = "%0.2f" % 2.50
-sigmafloat = float(sigmastr)
-name = 'q3'
-L = 128
+sigmastr = "%0.2f_infIMG" % 1.80
+name = 'T067'
+L = 16
 test = 7
-T = np.load('data/sigma_2.50/simulation_q3/L_128/magnetization/T.npy', allow_pickle=True)[0:2]
+T = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_16/magnetization/T.npy', allow_pickle=True)
 
 
 
-mx = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)[:,:4000]
-my = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)[:,:4000]
+mx = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)[-200:]
+my = np.load(f'data/sigma_{sigmastr}/simulation_{name}/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)[-200:]
 m2 = mx**2 + my**2
 
 plt.figure()
@@ -27,7 +26,8 @@ for t, temp in enumerate(T):
     # plt.plot(acorr, label = str(t))
     # plt.legend()    
     plt.plot(intacorr_stat, label = str(temp) + ' stats' )
-    plt.legend()  
+    plt.legend() 
+  
     
 for t,temp in enumerate(T):
     data = m2[t]
@@ -39,7 +39,8 @@ for t,temp in enumerate(T):
     # plt.plot(acorr, label = str(t))
     # plt.legend()    
     plt.plot(intacorr_stat, '.', label = str(temp) + ' np')
-    plt.legend()  
+    plt.legend() 
+    plt.show() 
 
 
 #rifai con taglie piccole e potrebbe esserci un plateau, poi fai media sui test

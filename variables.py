@@ -8,12 +8,16 @@ g_drive_dir = ''#G:/Other computers/principal/Università/DOTTORATO/Codes/dll/'
 
 d = 2
 #<<<<<<< HEAD
-test = 20
+test = 100
 #=======
 #>>>>>>> 18727f042f4324a7999e73f9637258f5fd1add35
-simulation = 'sweep_2_infIMG'
 
-sigma = '1.80'
+#T= [0.1, 0.15,0.2, 0.39, 0.42]
+
+
+simulation = 'T02_bis'
+
+sigma = '4.00_infIMG'
 
 data_path = g_drive_dir + 'data/sigma_'+sigma+'/'
 #for 1D:
