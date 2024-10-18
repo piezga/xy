@@ -2,6 +2,7 @@
 data/
 
 # executables
+executables/
 
 # outputs
 outs/
