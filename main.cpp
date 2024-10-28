@@ -13,6 +13,7 @@
 #include <vector>
 #include <random>
 #include <cstdlib>
+#include <time.h>
 #include <ctime>
 #include <omp.h>
 
@@ -24,7 +25,7 @@ int main(int argc, char *argv[]) {
 
 bool already_termalized = false; //true per fare partire dall'ultima configurazione
 
-int checkpoint = 10000000000;
+int checkpoint = 10;
 
 /*
 argc is the argument counter
@@ -59,6 +60,7 @@ Scheme:
 
 //Some more variable definitions
 
+  time_t my_time = time(NULL); 
   const double sigma = parameter_numbers[0];
   const int q = parameter_numbers[1];
   const int steps = parameter_numbers[2];
@@ -355,8 +357,14 @@ fflush(stdout);
 
       for (int step = 0; step < steps; step++){
 
-     
-      fflush(stdout);
+
+        if (step % checkpoint == 0){
+
+          printf("%s", ctime(&my_time));}  
+
+
+
+       fflush(stdout);
 
 
         for (int spinflip = 0; spinflip < pow(L,2); spinflip++) {
@@ -475,54 +483,7 @@ fflush(stdout);
    //   }
 
 
-        if (step % checkpoint == 0){
-
-      //printf("Checkpoint! Saving configuration after %d steps\n", step);
-     
-      //fflush(stdout);
-
-      
-
-
-          configuration_file_name = output_path_name+"L_"+to_string(L)+"/test_"+test+
-                        "/last_configuration/T_"+to_string(T)+".bin";
-          configuration_file = fopen(configuration_file_name.c_str(), "wb");
-          for (int k = 0; k < L; k++){
-            for (int l = 0; l < L; l++){
-                    fwrite(&lattice[k][l],sizeof(double), 1, configuration_file);
-
-              }
-
-          }
-
-          fclose( configuration_file);
-          
-                    
-            for (int r = 0; r < max_distance; r++) {
-                spatial_correlations[r] = 0;
-
-            }
-
-            for (int i = 0; i < L; i++) {
-                for (int j = 0; j < L; j++) {
-                    for (int r = 1; r <= max_distance; r++) {
-                        // Using modulo operator for periodic boundary conditions
-                        spatial_correlations[r-1] += 0.5 * ( cos(lattice[i][j] - lattice[(i+r)%L][j]) 
-                                                            + cos(lattice[i][j] - lattice[i][(j+r)%L])  );
-
-                    }
-                }
-            }
-
-            for (int r = 0; r < max_distance; r++) {
-                spatial_correlations[r] /= (L * L);
-                fwrite(&spatial_correlations[r],sizeof(double), 1, spatial_cor_file);
-            }
-
-            
-
-        }
-     
+    
       }
 
    //free( my_buffer );
