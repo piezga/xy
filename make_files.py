@@ -4,9 +4,9 @@ import sys
 
 print('MAKING FILES')
 
-steps = 10
+steps = 1000
 termalization = 0
-
+g = 0.1
 d = 2
 
 #make_T_file(bool) sigma(1.50) simulation_number test_number
@@ -33,7 +33,7 @@ if make_T_file == 'False':
 print('Simulation data: ',test, simulation, sigma , make_T_file)
 
 
-parameters = [float(sigma),3,steps,termalization]
+parameters = [float(sigma),3,steps,termalization,g]
 
 
 Ls = np.array([16])

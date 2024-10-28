@@ -315,18 +315,7 @@ fflush(stdout);
   fflush(stdout); 
 
 
-        fread(flatten_lattice,sizeof(double), L*L, configuration_file);
-
-      
-
-  printf("Flat lattice filled!\n");
   fflush(stdout); 
-
-//         for (int i = 0; i < L; i++){
-//           for (int j = 0; j < L; j++){
-//   printf("i: %d, j: %d, flat_lattice:%f, lattice:%f\n", i,j,flatten_lattice[i*L+j], lattice[i][j]);
-//  fflush(stdout); 
-//           }}
 
         for (int i = 0; i < L; i++){
           for (int j = 0; j < L; j++){
@@ -358,11 +347,10 @@ fflush(stdout);
       for (int step = 0; step < steps; step++){
 
 
-        if (step % checkpoint == 0){
-
-          printf("%s", ctime(&my_time));}  
-
-
+        if (step % checkpoint == 0) {
+          time(&my_time); // Update my_time each time this block is entered
+          printf("%s\n", ctime(&my_time));
+        }
 
        fflush(stdout);
 
