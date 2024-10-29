@@ -36,7 +36,7 @@ print('Simulation data: ',test, simulation, sigma , make_T_file)
 parameters = [float(sigma),3,steps,termalization,g]
 
 
-Ls = np.array([16])
+Ls = np.array([512])
 print(Ls)
 
 numT = 1

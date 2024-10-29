@@ -343,12 +343,15 @@ fflush(stdout);
   
 printf("num steps: %d \n", steps);
 fflush(stdout);
-
+printf("################\n\n");
+printf("Beginning step time record\n\n");
       for (int step = 0; step < steps; step++){
 
-
+        
+    
         if (step % checkpoint == 0) {
           time(&my_time); // Update my_time each time this block is entered
+          printf("Step number %d performed on ",step);
           printf("%s\n", ctime(&my_time));
         }
 
