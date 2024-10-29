@@ -73,7 +73,7 @@ Scheme:
                             "/simulation_" + simulation +"/Ls_test_"+test+".txt";
   string output_path_name = "./data/sigma_" + rounded_sigma +
                             "/simulation_" + simulation  + "/";
-
+  string timelog = "timelog_test_" + to_string(test) + ".txt";
   printf("sigma = %f \n",sigma);
   printf("steps = %d \n",steps);
   printf("q = %d \n",q);
@@ -340,11 +340,18 @@ fflush(stdout);
 
       }
 
-  
-printf("num steps: %d \n", steps);
-fflush(stdout);
-printf("################\n\n");
-printf("Beginning step time record\n\n");
+
+  //Creating timelog
+
+  ofstream outFile(timelog);
+
+  // Check if the file opened successfully
+
+  if (!outFile) {
+    cerr << "Error: Could not open the file " << filename << " for writing." << endl;
+    return 1;
+  }
+
       for (int step = 0; step < steps; step++){
 
         
@@ -508,9 +515,3 @@ printf("Beginning step time record\n\n");
   return 0;
 
 }
-
-
-
-
-
-
