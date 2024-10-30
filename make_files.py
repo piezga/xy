@@ -4,10 +4,12 @@ import sys
 
 print('MAKING FILES')
 
-steps = 1000
+steps = 100
 termalization = 0
 g = 0.1
 d = 2
+Ls = np.array([1024])
+
 
 #make_T_file(bool) sigma(1.50) simulation_number test_number
 
@@ -36,7 +38,6 @@ print('Simulation data: ',test, simulation, sigma , make_T_file)
 parameters = [float(sigma),3,steps,termalization,g]
 
 
-Ls = np.array([512])
 print(Ls)
 
 numT = 1
