@@ -8,8 +8,8 @@ external_usb = 0
 
 #Simulation variables
 sigma = '1.800'
-simulations = ['0.0001','0.001','0.023','0.123','0.38','0.67','0.72']
-manual_simulation_ID = 6
+simulations = ['0.0001','0.001','0.023','0.38','0.67','0.72']
+manual_simulation_ID = 2
 Ls = np.array([1024])
 test = 100 
 
@@ -28,7 +28,7 @@ else:
 
 simulation = simulations[sim_ID]
 
-simulation = '0.234'
+simulation = '0.123'
 
 
 #Path construction
