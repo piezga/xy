@@ -30,6 +30,7 @@ simulation = simulations[sim_ID]
 
 #simulation = '0.123'
 
+################################################################
 
 #Path construction
 usb_drive_path = '/media/piezga/toshiba/xy/'
