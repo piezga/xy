@@ -240,6 +240,9 @@ Scheme:
       double T,r, unif, theta,energy,neigh_theta,new_theta;
       double U,V,Sq,theta_q, Sq_x = 0, Sq_y = 0;
       double   magne_x = 0, magne_y = 0;
+      double magne_x_k_re = 0, magne_y_k_re = 0;
+      double magne_x_k_im = 0, magne_y_k_im = 0;
+
       string output_file_name_x,output_file_name_y, spatial_cor_file_name, seed_file_name, configuration_file_name;
       FILE * data_output_file_x, * data_output_file_y, * seed_file, * configuration_file, *spatial_cor_file;
       //double lattice[L][L];
@@ -284,13 +287,40 @@ Scheme:
       printf("Output FILE: %s\n", output_file_name_y.c_str());
       data_output_file_y = fopen( output_file_name_y.c_str() ,"wb");
 
+
+
+      // Output file for mx_re
+      output_file_name_x_re = output_path_name + "L_" +
+                              to_string(L) + "/test_" + test + "/T_" + to_string(T) + "_mx_re.bin";
+      printf("Output FILE: %s\n", output_file_name_x_re.c_str());
+      data_output_file_x_re = fopen(output_file_name_x_re.c_str(), "wb");
+
+      // Output file for my_re
+      output_file_name_y_re = output_path_name + "L_" +
+                              to_string(L) + "/test_" + test + "/T_" + to_string(T) + "_my_re.bin";
+      printf("Output FILE: %s\n", output_file_name_y_re.c_str());
+      data_output_file_y_re = fopen(output_file_name_y_re.c_str(), "wb");
+
+      // Output file for mx_im
+      output_file_name_x_im = output_path_name + "L_" +
+                              to_string(L) + "/test_" + test + "/T_" + to_string(T) + "_mx_im.bin";
+      printf("Output FILE: %s\n", output_file_name_x_im.c_str());
+      data_output_file_x_im = fopen(output_file_name_x_im.c_str(), "wb");
+
+      // Output file for my_im
+      output_file_name_y_im = output_path_name + "L_" +
+                              to_string(L) + "/test_" + test + "/T_" + to_string(T) + "_my_im.bin";
+      printf("Output FILE: %s\n", output_file_name_y_im.c_str());
+      data_output_file_y_im = fopen(output_file_name_y_im.c_str(), "wb");
+
+/*
       spatial_cor_file_name = output_path_name+"L_"+
                           to_string(L)+"/test_"+test+"/T_"+to_string(T)+"_spatial.bin";
       printf("Spatial correlation FILE: %s\n", spatial_cor_file_name.c_str());
       spatial_cor_file = fopen( spatial_cor_file_name.c_str() ,"wb");
 
       fflush(stdout);
-
+*/
     
       //int count = 0;
       //TERMALIZATION
@@ -336,10 +366,22 @@ fflush(stdout);
 
 
 
-//delete [] flatten_lattice;
-
       }
 
+  
+  //define fourier sines and cosines 
+
+  double* fourier_cosines = new double[L]; // Dynamically allocate the array
+  double* fourier_sines = new double[L];
+
+    // Populate the array 
+    for (int i = 0; i < L; i++) {
+        fourier_cosines[i] = cos(i * 2* M_PI / L);
+    }
+    
+    for (int i = 0; i < L; i++) {
+        fourier_sines[i] = sin(i * 2* M_PI / L);
+    }
   
 printf("num steps: %d \n", steps);
 fflush(stdout);
@@ -459,20 +501,42 @@ printf("Beginning step time record\n\n");
 
         magne_x = 0;
         magne_y = 0;
+        magne_x_k_re = 0;
+        magne_y_k_re = 0;
+        magne_x_k_im = 0;
+        magne_y_k_im = 0;
+
         for (int k = 0; k < L; k++){
             for (int l = 0; l < L; l++){
                 magne_x += cos(lattice[k][l]);
                 magne_y += sin(lattice[k][l]);
+
+                magne_x_k_re += cos(lattice[k][l])*fourier_cosines[k];
+                magne_y_k_re += sin(lattice[k][l])*fourier_sines[k];
+
+                magne_x_k_im += cos(lattice[k][l])*fourier_cosines[k];
+                magne_y_k_im += sin(lattice[k][l])*fourier_sines[k];
+
             }
         }
 
         magne_x = magne_x/pow(L,2);
         magne_y = magne_y/pow(L,2);
+        magne_x_k_re = magne_x_k_re/pow(L,2);
+        magne_y_k_re = magne_y_k_re/pow(L,2);
+        magne_x_k_im = magne_x_k_im/pow(L,2);
+        magne_y_k_im = magne_y_k_im/pow(L,2);
 
         fwrite(&magne_x,sizeof(double), 1, data_output_file_x);
         fwrite(&magne_y,sizeof(double), 1, data_output_file_y);
-   //   }
-
+ 
+        fwrite(&magne_x_re,sizeof(double), 1, data_output_file_x_re);
+        fwrite(&magne_y_re,sizeof(double), 1, data_output_file_y_re);
+   
+        fwrite(&magne_x_im,sizeof(double), 1, data_output_file_x_im);
+        fwrite(&magne_y_im,sizeof(double), 1, data_output_file_y_im);
+ //   }
+        // qua devo aggiungere il modo di fourier
 
     
       }
@@ -480,6 +544,11 @@ printf("Beginning step time record\n\n");
    //free( my_buffer );
       fclose( data_output_file_x );
       fclose( data_output_file_y );
+      fclose( data_output_file_x_re );
+      fclose( data_output_file_y_re );
+      fclose( data_output_file_x_im );
+      fclose( data_output_file_y_im );
+      
       fclose( spatial_cor_file );
 
       configuration_file_name = output_path_name+"L_"+to_string(L)+"/test_"+test+
