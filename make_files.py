@@ -4,11 +4,11 @@ import sys
 
 print('MAKING FILES')
 
-steps = 100
+steps = 150
 termalization = 0
 g = 0.1
 d = 2
-Ls = np.array([1024])
+Ls = np.array([16])
 
 
 #make_T_file(bool) sigma(1.50) simulation_number test_number

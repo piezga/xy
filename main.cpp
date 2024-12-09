@@ -58,6 +58,12 @@ Scheme:
   }
 
 
+
+if (argc < 3) {
+    fprintf(stderr, "Error: Insufficient arguments.\n");
+    return 1;
+}
+
 //Some more variable definitions
 
   time_t my_time = time(NULL); 
@@ -119,56 +125,56 @@ Scheme:
 
   //get the number of sizes
   for (c = getc(sizes_file); c != EOF; c = getc(sizes_file))
-    if (c == '\n') // Increment count if this character is newline
-      number_of_L = number_of_L + 1;
+      if (c == '\n') // Increment count if this character is newline
+        number_of_L = number_of_L + 1;
 
 
-  printf("Done!\n");
-  fflush(stdout);
-  printf("Number of sizes: %d\n", number_of_L);
-  fflush(stdout);
+    printf("Done!\n");
+    fflush(stdout);
+    printf("Number of sizes: %d\n", number_of_L);
+    fflush(stdout);
 
-  //reput the FILE puntactor at the start of the file
-  rewind(sizes_file);
+    //reput the FILE puntactor at the start of the file
+    rewind(sizes_file);
 
-  //create the size array and put the sizes into it
-  int Ls[number_of_L];
-
-
-  while (fscanf(sizes_file, "%d", &Ls[index_L])!=EOF){
-    index_L ++;
-  }
-
-  fclose( sizes_file );
+    //create the size array and put the sizes into it
+    int Ls[number_of_L];
 
 
+    while (fscanf(sizes_file, "%d", &Ls[index_L])!=EOF){
+      index_L ++;
+    }
 
-
-  //start the loop over the sizes
-  printf("number of Ls: %d \n", number_of_L);
-  for(int sizes = 0; sizes < number_of_L; sizes ++){
-
-    int tmp, L, number_of_T = 0, index_T = 0;
-    string  temperatures_file_name;
-    FILE *temperatures_file;
-    L = Ls[sizes];
-    int max_distance = L / 2;
-    double spatial_correlations[max_distance];
+    fclose( sizes_file );
 
 
 
-    // open the temperature files
-  printf("Opening the T's file...\n");
-  fflush(stdout);
 
-    temperatures_file_name = temperatures_path_name + "L_"+to_string(L)+"/Ts_test_"+test+".txt";
-    printf("Temperatures FILE: %s\n", temperatures_file_name.c_str());
-	fflush(stdout);
+    //start the loop over the sizes
+    printf("number of Ls: %d \n", number_of_L);
+    for(int sizes = 0; sizes < number_of_L; sizes ++){
 
-    temperatures_file = fopen(temperatures_file_name.c_str(),"r");
-    // gets the number of temperatures
-    for (tmp = getc(temperatures_file); tmp != EOF; tmp = getc(temperatures_file))
-      if (tmp == '\n') // Increment count if this character is newline
+      int tmp, L, number_of_T = 0, index_T = 0;
+      string  temperatures_file_name;
+      FILE *temperatures_file;
+      L = Ls[sizes];
+      int max_distance = L / 2;
+      double spatial_correlations[max_distance];
+
+
+
+      // open the temperature files
+    printf("Opening the T's file...\n");
+    fflush(stdout);
+
+      temperatures_file_name = temperatures_path_name + "L_"+to_string(L)+"/Ts_test_"+test+".txt";
+      printf("Temperatures FILE: %s\n", temperatures_file_name.c_str());
+    fflush(stdout);
+
+      temperatures_file = fopen(temperatures_file_name.c_str(),"r");
+      // gets the number of temperatures
+      for (tmp = getc(temperatures_file); tmp != EOF; tmp = getc(temperatures_file))
+        if (tmp == '\n') // Increment count if this character is newline
         number_of_T = number_of_T + 1;
 
     printf("Number of temperatures: %d\n", number_of_T);
@@ -244,7 +250,9 @@ Scheme:
       double magne_x_k_im = 0, magne_y_k_im = 0;
 
       string output_file_name_x,output_file_name_y, spatial_cor_file_name, seed_file_name, configuration_file_name;
+      string output_file_name_x_re,output_file_name_y_re, output_file_name_x_im, output_file_name_y_im;
       FILE * data_output_file_x, * data_output_file_y, * seed_file, * configuration_file, *spatial_cor_file;
+      FILE * data_output_file_x_re, * data_output_file_y_re, * data_output_file_x_im, * data_output_file_y_im;
       //double lattice[L][L];
 
 
@@ -313,14 +321,46 @@ Scheme:
       printf("Output FILE: %s\n", output_file_name_y_im.c_str());
       data_output_file_y_im = fopen(output_file_name_y_im.c_str(), "wb");
 
-/*
+      //Check the files before writing
+      if (!data_output_file_x) {
+          perror("Error opening data_output_file_x");
+          return 1;
+        }
+
+      if (!data_output_file_y) {
+          perror("Error opening data_output_file_y");
+          return 1;
+        }
+
+      if (!data_output_file_x_re) {
+          perror("Error opening data_output_file_x_re");
+          return 1;
+        }
+
+      if (!data_output_file_y_re) {
+          perror("Error opening data_output_file_y_re");
+          return 1;
+        }
+
+      if (!data_output_file_x_im) {
+          perror("Error opening data_output_file_x_im");
+          return 1;
+        }
+
+      if (!data_output_file_y_im) {
+          perror("Error opening data_output_file_y_im");
+          return 1;
+      }
+
+
+
       spatial_cor_file_name = output_path_name+"L_"+
                           to_string(L)+"/test_"+test+"/T_"+to_string(T)+"_spatial.bin";
       printf("Spatial correlation FILE: %s\n", spatial_cor_file_name.c_str());
       spatial_cor_file = fopen( spatial_cor_file_name.c_str() ,"wb");
 
       fflush(stdout);
-*/
+
     
       //int count = 0;
       //TERMALIZATION
@@ -334,6 +374,11 @@ printf("Opening...\n");
 fflush(stdout);
 
         configuration_file = fopen(configuration_file_name.c_str(), "rb");
+
+        if (!configuration_file) {
+           perror("Error opening configuration file");
+           return 1; // Exit or handle the error
+           }
 
   printf("File opened!\n");
   fflush(stdout);
@@ -364,7 +409,7 @@ fflush(stdout);
   printf("File closed!\n");
   fflush(stdout); 
 
-
+  delete[] flatten_lattice;
 
       }
 
@@ -526,15 +571,17 @@ printf("Beginning step time record\n\n");
         magne_y_k_re = magne_y_k_re/pow(L,2);
         magne_x_k_im = magne_x_k_im/pow(L,2);
         magne_y_k_im = magne_y_k_im/pow(L,2);
+        
+
 
         fwrite(&magne_x,sizeof(double), 1, data_output_file_x);
         fwrite(&magne_y,sizeof(double), 1, data_output_file_y);
  
-        fwrite(&magne_x_re,sizeof(double), 1, data_output_file_x_re);
-        fwrite(&magne_y_re,sizeof(double), 1, data_output_file_y_re);
+        fwrite(&magne_x_k_re,sizeof(double), 1, data_output_file_x_re);
+        fwrite(&magne_y_k_re,sizeof(double), 1, data_output_file_y_re);
    
-        fwrite(&magne_x_im,sizeof(double), 1, data_output_file_x_im);
-        fwrite(&magne_y_im,sizeof(double), 1, data_output_file_y_im);
+        fwrite(&magne_x_k_im,sizeof(double), 1, data_output_file_x_im);
+        fwrite(&magne_y_k_im,sizeof(double), 1, data_output_file_y_im);
  //   }
         // qua devo aggiungere il modo di fourier
 
@@ -550,7 +597,7 @@ printf("Beginning step time record\n\n");
       fclose( data_output_file_y_im );
       
       fclose( spatial_cor_file );
-
+      
       configuration_file_name = output_path_name+"L_"+to_string(L)+"/test_"+test+
                         "/last_configuration/T_"+to_string(T)+".bin";
       configuration_file = fopen(configuration_file_name.c_str(), "wb");
@@ -571,7 +618,9 @@ printf("Beginning step time record\n\n");
     end = omp_get_wtime(); 
     printf("Time (per-thread) taken: %.2fs\n", (double)(end - start));
     fflush(stdout);
-
+    
+    delete[] fourier_cosines;
+    delete[] fourier_sines;
   }
 
   return 0;

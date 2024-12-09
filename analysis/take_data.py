@@ -2,7 +2,7 @@ from functions import *
 import sys
 
 #Flags
-spatial_cor = 1
+spatial_cor = 0
 thermo = 0
 
 #Unused
@@ -39,7 +39,7 @@ for i in range(test):
               m_T_y.append(np.fromfile(total_path+each_file[:-7]+'_my.bin',dtype = 'float'))
               if spatial_cor:
                 spatial.append(np.fromfile(total_path+each_file[:-7]+'_spatial.bin',dtype = 'float'))
-              print(spatial[-1].shape)
+              #print(spatial[-1].shape)
               check_temperature = True
 
         if not check_temperature:
