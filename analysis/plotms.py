@@ -8,7 +8,7 @@ plt.rcParams['figure.dpi'] = 150
 
 
 #Tests and starting point
-tests = np.arange(5)
+tests = np.arange(2)
 t = 0
 
 print(path) 

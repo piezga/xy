@@ -18,7 +18,11 @@ for i in range(test):
     total_path = L_path +'test_'+str(i)+'/'
     T = np.loadtxt(L_path+'Ts_test_'+str(i)+'.txt',ndmin=1)
     m_T_x = []
+    m_T_x_re = []
+    m_T_x_im = []
     m_T_y = []
+    m_T_y_re = []
+    m_T_y_im = []
     spatial = []
     temperature_saving = True
     for temp in range(len(T)):
@@ -32,11 +36,16 @@ for i in range(test):
             and each_file != 'seeds'
             and each_file != 'last_configuration'
             and 'spatial' not in each_file
-            and float(each_file[2:-7]) == round(T[temp],6)
+            and float(each_file[2:9]) == round(T[temp],6)
             and each_file[-5] == 'x') :#in this way i'm taking only just one time the data  
               print(each_file)
               m_T_x.append(np.fromfile(total_path+each_file[:-7]+'_mx.bin',dtype = 'float'))
+              m_T_x_re.append(np.fromfile(total_path+each_file[:-7]+'_mx_re.bin',dtype = 'float'))
+              m_T_x_im.append(np.fromfile(total_path+each_file[:-7]+'_mx_im.bin',dtype = 'float'))
               m_T_y.append(np.fromfile(total_path+each_file[:-7]+'_my.bin',dtype = 'float'))
+              m_T_y_re.append(np.fromfile(total_path+each_file[:-7]+'_my_re.bin',dtype = 'float'))
+              m_T_y_im.append(np.fromfile(total_path+each_file[:-7]+'_my_im.bin',dtype = 'float'))
+ 
               if spatial_cor:
                 spatial.append(np.fromfile(total_path+each_file[:-7]+'_spatial.bin',dtype = 'float'))
               #print(spatial[-1].shape)
@@ -58,8 +67,18 @@ for i in range(test):
     if len(m_T_x) > 0:
       m_T_x = np.array(m_T_x,dtype='object')
       m_T_y = np.array(m_T_y,dtype='object')
+      m_T_x_re = np.array(m_T_x_re,dtype='object')
+      m_T_y_re = np.array(m_T_y_re,dtype='object')
+      m_T_x_im = np.array(m_T_x_im,dtype='object')
+      m_T_y_im = np.array(m_T_y_im,dtype='object')
+ 
       np.save(L_path+'magnetization/'+'mx_test_'+str(i)+'.npy',m_T_x)
       np.save(L_path+'magnetization/'+'my_test_'+str(i)+'.npy',m_T_y)
+      np.save(L_path+'magnetization/'+'mx_re_test_'+str(i)+'.npy',m_T_x_re)
+      np.save(L_path+'magnetization/'+'my_re_test_'+str(i)+'.npy',m_T_y_re)
+      np.save(L_path+'magnetization/'+'mx_im_test_'+str(i)+'.npy',m_T_x_im)
+      np.save(L_path+'magnetization/'+'my_im_test_'+str(i)+'.npy',m_T_y_im)
+ 
       if spatial_cor:
         spatial = np.array(spatial,dtype='object')
         print('Spatial shape: ',spatial.shape)
