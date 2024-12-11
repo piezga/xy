@@ -23,7 +23,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 
-bool already_termalized = false; //true per fare partire dall'ultima configurazione
+bool already_termalized = true; //true per fare partire dall'ultima configurazione
 
 int checkpoint = 10;
 
@@ -289,11 +289,11 @@ if (argc < 3) {
       output_file_name_x = output_path_name+"L_"+
                           to_string(L)+"/test_"+test+"/T_"+to_string(T)+"_mx.bin";
       printf("Output FILE: %s\n", output_file_name_x.c_str());
-      data_output_file_x = fopen( output_file_name_x.c_str() ,"wb");
+      data_output_file_x = fopen( output_file_name_x.c_str() ,"ab");
       output_file_name_y = output_path_name+"L_"+
                           to_string(L)+"/test_"+test+"/T_"+to_string(T)+"_my.bin";
       printf("Output FILE: %s\n", output_file_name_y.c_str());
-      data_output_file_y = fopen( output_file_name_y.c_str() ,"wb");
+      data_output_file_y = fopen( output_file_name_y.c_str() ,"ab");
 
 
 
@@ -301,25 +301,25 @@ if (argc < 3) {
       output_file_name_x_re = output_path_name + "L_" +
                               to_string(L) + "/test_" + test + "/T_" + to_string(T) + "_mx_re.bin";
       printf("Output FILE: %s\n", output_file_name_x_re.c_str());
-      data_output_file_x_re = fopen(output_file_name_x_re.c_str(), "wb");
+      data_output_file_x_re = fopen(output_file_name_x_re.c_str(), "ab");
 
       // Output file for my_re
       output_file_name_y_re = output_path_name + "L_" +
                               to_string(L) + "/test_" + test + "/T_" + to_string(T) + "_my_re.bin";
       printf("Output FILE: %s\n", output_file_name_y_re.c_str());
-      data_output_file_y_re = fopen(output_file_name_y_re.c_str(), "wb");
+      data_output_file_y_re = fopen(output_file_name_y_re.c_str(), "ab");
 
       // Output file for mx_im
       output_file_name_x_im = output_path_name + "L_" +
                               to_string(L) + "/test_" + test + "/T_" + to_string(T) + "_mx_im.bin";
       printf("Output FILE: %s\n", output_file_name_x_im.c_str());
-      data_output_file_x_im = fopen(output_file_name_x_im.c_str(), "wb");
+      data_output_file_x_im = fopen(output_file_name_x_im.c_str(), "ab");
 
       // Output file for my_im
       output_file_name_y_im = output_path_name + "L_" +
                               to_string(L) + "/test_" + test + "/T_" + to_string(T) + "_my_im.bin";
       printf("Output FILE: %s\n", output_file_name_y_im.c_str());
-      data_output_file_y_im = fopen(output_file_name_y_im.c_str(), "wb");
+      data_output_file_y_im = fopen(output_file_name_y_im.c_str(), "ab");
 
       //Check the files before writing
       if (!data_output_file_x) {
@@ -357,7 +357,7 @@ if (argc < 3) {
       spatial_cor_file_name = output_path_name+"L_"+
                           to_string(L)+"/test_"+test+"/T_"+to_string(T)+"_spatial.bin";
       printf("Spatial correlation FILE: %s\n", spatial_cor_file_name.c_str());
-      spatial_cor_file = fopen( spatial_cor_file_name.c_str() ,"wb");
+      spatial_cor_file = fopen( spatial_cor_file_name.c_str() ,"ab");
 
       fflush(stdout);
 
@@ -389,7 +389,17 @@ fflush(stdout);
    printf("Flat lattice created!\n");
   fflush(stdout); 
 
+//The logic of the program doesn't change if I only call fread but its
+//unused return value could lead to issues and prompts a warning
 
+  size_t elements_read = fread(flatten_lattice, sizeof(double), L*L, configuration_file);
+  if (elements_read != L*L) {
+      perror("Error reading configuration file");
+      exit(EXIT_FAILURE);
+  }
+
+
+  printf("Flat lattice filled!\n");
   fflush(stdout); 
 
         for (int i = 0; i < L; i++){

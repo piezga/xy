@@ -4,6 +4,7 @@ import sys
 #Flags
 spatial_cor = 0
 thermo = 0
+fourier = 0
 
 #Unused
 chi_max = np.empty(len(Ls))
@@ -40,15 +41,16 @@ for i in range(test):
             and each_file[-5] == 'x') :#in this way i'm taking only just one time the data  
               print(each_file)
               m_T_x.append(np.fromfile(total_path+each_file[:-7]+'_mx.bin',dtype = 'float'))
-              m_T_x_re.append(np.fromfile(total_path+each_file[:-7]+'_mx_re.bin',dtype = 'float'))
-              m_T_x_im.append(np.fromfile(total_path+each_file[:-7]+'_mx_im.bin',dtype = 'float'))
               m_T_y.append(np.fromfile(total_path+each_file[:-7]+'_my.bin',dtype = 'float'))
-              m_T_y_re.append(np.fromfile(total_path+each_file[:-7]+'_my_re.bin',dtype = 'float'))
-              m_T_y_im.append(np.fromfile(total_path+each_file[:-7]+'_my_im.bin',dtype = 'float'))
- 
+
+              if fourier:
+                m_T_x_re.append(np.fromfile(total_path+each_file[:-7]+'_mx_re.bin',dtype = 'float'))
+                m_T_x_im.append(np.fromfile(total_path+each_file[:-7]+'_mx_im.bin',dtype = 'float'))
+                m_T_y_re.append(np.fromfile(total_path+each_file[:-7]+'_my_re.bin',dtype = 'float'))
+                m_T_y_im.append(np.fromfile(total_path+each_file[:-7]+'_my_im.bin',dtype = 'float'))
+  
               if spatial_cor:
                 spatial.append(np.fromfile(total_path+each_file[:-7]+'_spatial.bin',dtype = 'float'))
-              #print(spatial[-1].shape)
               check_temperature = True
 
         if not check_temperature:
