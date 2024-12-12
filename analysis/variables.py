@@ -10,7 +10,7 @@ external_usb = 0
 sigma = '1.800'
 simulations = ['0.0001','0.001','0.023','0.38','0.67','0.72']
 manual_simulation_ID = 1
-Ls = np.array([256])
+Ls = np.array([32])
 test = 2
 
 

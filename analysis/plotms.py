@@ -17,7 +17,7 @@ for L in Ls:
     
                 
         mx = np.load(path + f'/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)[t,:]
-        my = np.load(path + f'/L_{L}/magnetization/mx_test_{test}.npy', allow_pickle=True)[t,:]
+        my = np.load(path + f'/L_{L}/magnetization/my_test_{test}.npy', allow_pickle=True)[t,:]
         plot_path = path +  f'/L_{L}/plots_L_{L}/'
 
         if not os.path.isdir(plot_path):

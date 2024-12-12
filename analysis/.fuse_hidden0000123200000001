@@ -1,0 +1,77 @@
+from functions import *
+import sys
+
+
+spatial_cor = 0
+thermo = 0
+
+
+chi_max = np.empty(len(Ls))
+
+for i in range(test):
+  print('#########################')
+  print('Taking data from test: ', i)
+  #Ls = np.loadtxt(path+'/Ls_test_'+str(i)+'.txt', dtype = 'int16')
+  for L in Ls:
+    print('-------------')
+    print('L: ', L)
+    L_path = path+'/L_'+str(L)+'/'
+    total_path = L_path +'test_'+str(i)+'/'
+    T = np.loadtxt(L_path+'Ts_test_'+str(i)+'.txt',ndmin=1)
+    m_T_x = []
+    m_T_y = []
+    spatial = []
+    temperature_saving = True
+    for temp in range(len(T)):
+     # print('T: ', T[temp])
+      if os.path.exists(total_path):
+        list_of_files = os.listdir(total_path) #list of files in the current directory
+        check_temperature = False
+        for each_file in list_of_files:
+            if (each_file != 'Ts.txt'
+            and each_file != 'analysis'
+            and each_file != 'seeds'
+            and each_file != 'last_configuration'
+            and 'spatial' not in each_file
+            and float(each_file[2:-7]) == round(T[temp],6)
+            and each_file[-5] == 'x') :#in this way i'm taking only just one time the data  
+              print(each_file)
+              m_T_x.append(np.fromfile(total_path+each_file[:-7]+'_mx.bin',dtype = 'float'))
+              m_T_y.append(np.fromfile(total_path+each_file[:-7]+'_my.bin',dtype = 'float'))
+              if spatial_cor:
+                spatial.append(np.fromfile(total_path+each_file[:-7]+'_spatial.bin',dtype = 'float'))
+                print(spatial[-1].shape)
+              check_temperature = True
+
+            # print('Data taken! (',total_path+each_file,') shape: ', m_T[-1].shape)
+        if not check_temperature:
+          temperature_saving = False
+
+                
+    try:
+      os.mkdir(L_path+'magnetization')
+    except OSError as error:
+      pass
+    if spatial_cor:
+      try:
+        os.mkdir(L_path+'spatial_cor')
+      except OSError as error:
+        pass
+    if len(m_T_x) > 0:
+      m_T_x = np.array(m_T_x,dtype='object')
+      m_T_y = np.array(m_T_y,dtype='object')
+      np.save(L_path+'magnetization/'+'mx_test_'+str(i)+'.npy',m_T_x)
+      np.save(L_path+'magnetization/'+'my_test_'+str(i)+'.npy',m_T_y)
+      if spatial_cor:
+        spatial = np.array(spatial,dtype='object')
+        print('Spatial shape: ',spatial.shape)
+        np.save(L_path+'spatial_cor/'+'spatial_test_'+str(i)+'.npy',spatial)
+      
+      if temperature_saving:
+        np.save(L_path+'magnetization/T.npy',T)
+      #print('Data saved in ', L_path+'magnetization/'+'m_test_'+str(i)+'.npy')
+      print('Data shape: ', m_T_x.shape)
+    else:
+      print('No data was found, no data will be saved!')
+
+    print('END')
