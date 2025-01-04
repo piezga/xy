@@ -4,7 +4,7 @@ import sys
 #Flags
 spatial_cor = 0
 thermo = 0
-fourier = 0
+fourier = 1
 
 #Unused
 chi_max = np.empty(len(Ls))
