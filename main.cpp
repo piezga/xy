@@ -23,7 +23,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 
-bool already_termalized = true; //true per fare partire dall'ultima configurazione
+bool already_termalized = false; //true per fare partire dall'ultima configurazione
 
 int checkpoint = 10;
 
@@ -567,9 +567,9 @@ printf("Beginning step time record\n\n");
                 magne_y += sin(lattice[k][l]);
 
                 magne_x_k_re += cos(lattice[k][l])*fourier_cosines[k];
-                magne_y_k_re += sin(lattice[k][l])*fourier_sines[k];
+                magne_y_k_re += sin(lattice[k][l])*fourier_cosines[k];
 
-                magne_x_k_im += cos(lattice[k][l])*fourier_cosines[k];
+                magne_x_k_im += cos(lattice[k][l])*fourier_sines[k];
                 magne_y_k_im += sin(lattice[k][l])*fourier_sines[k];
 
             }

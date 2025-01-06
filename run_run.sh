@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-actual_T=0.001
+actual_T=0.1
 first_test=0
 last_test=1
 simulation=$actual_T

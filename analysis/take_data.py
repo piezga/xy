@@ -19,7 +19,7 @@ for i in range(test):
     total_path = L_path +'test_'+str(i)+'/'
     T = np.loadtxt(L_path+'Ts_test_'+str(i)+'.txt',ndmin=1)
     m_T_x = []
-    m_T_x_re = []
+    m_T_x_re = [] 
     m_T_x_im = []
     m_T_y = []
     m_T_y_re = []
