@@ -8,10 +8,10 @@ external_usb = 0
 
 #Simulation variables
 sigma = '1.800'
-simulations = ['0.0001','0.001','0.023','0.38','0.67','0.72']
-manual_simulation_ID = 1
+simulations = ['0.1','0.2','0.3','0.4','0.5','0.6','0.7','0.8']
+manual_simulation_ID = 5
 Ls = np.array([32])
-test = 20
+tests = 2
 
 
 ################################################################
@@ -28,7 +28,7 @@ else:
 
 simulation = simulations[sim_ID]
 
-simulation = '0.1'
+simulation = '2'
 
 ################################################################
 
@@ -36,6 +36,7 @@ simulation = '0.1'
 usb_drive_path = '/media/piezga/toshiba/xy/'
 data_path =   '../data/sigma_'+sigma+'/'
 path = data_path+'simulation_'+str(simulation)
+
 
 if external_usb:
     path = usb_drive_path +'simulation_'+str(simulation)

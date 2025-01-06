@@ -41,7 +41,7 @@ for L in Ls:
         plt.figure()
         plt.xlabel('Timestep')
         plt.ylabel('Magnetization')
-        plt.plot(mx_im, label = 'Test ' + str(test))
+        plt.plot(m2, label = 'Test ' + str(test))
         plt.legend()        
         # plt.savefig(plot_path + f'm2_test_{test}.png')
         print('Shape of m2 is ' + str(np.shape(m2)) )

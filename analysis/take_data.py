@@ -9,7 +9,7 @@ fourier = 1
 #Unused
 chi_max = np.empty(len(Ls))
 
-for i in range(test):
+for i in range(tests):
   print('#########################')
   print('Taking data from test: ', i)
   for L in Ls:

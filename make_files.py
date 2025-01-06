@@ -4,7 +4,7 @@ import sys
 
 print('MAKING FILES')
 
-steps = 50*10**3
+steps = 200*10**3
 termalization = 0
 g = 0.1
 d = 2
