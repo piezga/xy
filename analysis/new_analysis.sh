@@ -5,11 +5,11 @@
 
 export CALLED_FROM_BASH=1
 
-for sim_number in {0,3}
+for sim_number in {0..13}
 do
      
-    python take_data.py $sim_number
-    #python analysis.py $sim_number
+    #python take_data.py $sim_number
+    python analysis_non_spatial.py $sim_number
     #python present_binders.py $sim_number
 done
 

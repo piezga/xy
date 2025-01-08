@@ -43,7 +43,14 @@ for t, temp in enumerate(temperatures):
 
             print(f"T={temp}, L={L}, Test={test}, m2={np.mean(m2)}, m_k_2={np.mean(m_k_2)}")
 
-        correlation_lengths[t, l] = np.mean(m2_over_tests)
-        d_correlation_lengths[t, l] = np.std(m2_over_tests)
+        m2_mean = np.mean(m2_over_tests)
+        d_m2_mean = np.std(m2_over_tests)/np.sqrt(tests-1)       
 
+        m_k_2_mean = np.mean(m_k_2_over_tests)
+        d_m_k_2_mean = np.std(m_k_2_over_tests)/np.sqrt(tests-1)       
+ 
+        correlation_lengths[t, l] = prefactor * np.sqrt(m2_mean/m_k_2_mean - 1)
+        d_correlation_lengths[t,l] = (abs(prefactor / 2 / m_k_2_mean / np.sqrt(m2_mean / m_k_2_mean - 1))* d_m2_mean 
+                                    + abs(prefactor * m2_mean * -1 / 2 / m_k_2_mean ** 2 / np.sqrt(m2_mean / m_k_2_mean - 1)) 
+                                    * d_m_k_2_mean)
         print(f"T={temp}, L={L}, Mean Correlation Length={correlation_lengths[t, l]}, Std Dev={d_correlation_lengths[t, l]}")

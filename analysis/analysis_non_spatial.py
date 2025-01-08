@@ -34,12 +34,12 @@ except OSError as error:
 print('##################')
 print('Taking the magnetization data already checked with the temperature.')
 
-chi_max = np.empty(len(Ls_chosen))
+chi_max = np.empty(len(Ls))
 
 L_idx = 0
 
 
-for L in Ls_chosen:
+for L in Ls:
 
     print('L: ',L)
     L_path = path+'/L_'+str(L)+'/'
@@ -71,10 +71,10 @@ for L in Ls_chosen:
     specific_heat = []
 
 
-    actual_test = test
+    actual_test = tests
 
 
-    for i in range(test):
+    for i in range(tests):
         test_path = path+'/L_'+str(L)+f'/test_{i}/last_configuration/'
         test_path_analyzed = path+'_analyzed/L_'+str(L)+f'/test_{i}/last_configuration/'
         try:
@@ -220,7 +220,7 @@ for L in Ls_chosen:
     np.save(analysis_path + '/dbinder.npy',binders_err)
 
 
-
+"""
     plt.figure(1)
     plt.errorbar(T,ms_mean,ms_err, marker = '.',label = str(L))
     plt.legend()
@@ -243,15 +243,15 @@ plt.title('$\chi$ vs $L$ at $\sigma$ = '+str(sigma))
 plt.xlabel('L')
 plt.ylabel('$\chi$')
 
-plt.errorbar(Ls_chosen,chi_max,marker = 'o',label='experiment' )
+plt.errorbar(Ls,chi_max,marker = 'o',label='experiment' )
 
 plt.xscale('log')
 plt.yscale('log')
 
 
 
-popt,pcov = linear_fit(np.log(Ls_chosen),np.log(chi_max))
-x_plot = np.linspace(Ls_chosen[0],Ls_chosen[-1],10**3)
+popt,pcov = linear_fit(np.log(Ls),np.log(chi_max))
+x_plot = np.linspace(Ls[0],Ls[-1],10**3)
 plt.plot(x_plot,np.exp(popt[1])*x_plot**popt[0],label='fit' )
 print(popt,pcov)
 
@@ -262,3 +262,4 @@ plt.legend()
 
 
 #plt.show()
+"""
