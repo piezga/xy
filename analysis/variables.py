@@ -36,6 +36,7 @@ simulation = simulations[sim_ID]
 usb_drive_path = '/media/piezga/toshiba/xy/'
 data_path =   '../data/sigma_'+sigma+'/'
 path = data_path+'simulation_'+str(simulation)
+quantities_path = data_path + 'global_quantities/'
 
 
 if external_usb:
