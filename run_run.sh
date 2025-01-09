@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-actual_T=1.4
+actual_T=0.55
 first_test=0
-last_test=1
+last_test=0
 simulation=$actual_T
 sigma=1.800
 num_temperatures=0

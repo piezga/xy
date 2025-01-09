@@ -37,7 +37,9 @@ for L in Ls:
 
     
         m2 = mx**2 + my**2
-        
+        m_k_2 = mx_re**2 + my_re**2 + mx_im**2 + my_im**2
+
+
         plt.figure()
         plt.xlabel('Timestep')
         plt.ylabel('Magnetization')
