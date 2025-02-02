@@ -188,7 +188,23 @@ def copy_file(src_dir,dst_dir,filename):
   shutil.copy(src_path, dst_path)
 
 
-
+def autocorrelation_time(series, max_lag=None):  #In futuro da implementare la FFT
+    series = np.asarray(series.ravel())
+    n = len(series)
+    mean = np.mean(series)
+    var = np.var(series)
+    
+    if max_lag is None:
+        max_lag = n // 10  # PROBLEMA!!!
+                           # set an adaptive kmax? -> prossimamente  
+    autocorr = []
+    for lag in range(max_lag):
+        cov = np.sum((series[:n-lag] - mean) * (series[lag:] - mean)) / n
+        autocorr.append(cov / var)
+    
+    autocorr = np.array(autocorr)
+    tau_int = 1 + 2 * np.sum(autocorr[1:])  # Skip lag=0 for the sum
+    return tau_int, autocorr
     
 if __name__ == "__main__":
   print('Just a module! There is not a reason to execute it!')
