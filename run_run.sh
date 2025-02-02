@@ -1,11 +1,11 @@
 #!/bin/bash
 
 
-actual_T=1.4
+actual_T=1.3
 first_test=0
-last_test=1
+last_test=2
 simulation=$actual_T
-sigma=1.800
+sigma=2.800
 num_temperatures=0
 
 num_tests=$(( $last_test - $first_test + 1))

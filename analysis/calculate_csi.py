@@ -1,5 +1,6 @@
 from variables import *
 import numpy as np
+import os
 
 #create a matrix where the rows are the temperatures
 #and the columns the sizes
@@ -54,3 +55,13 @@ for t, temp in enumerate(temperatures):
                                     + abs(prefactor * m2_mean * -1 / 2 / m_k_2_mean ** 2 / np.sqrt(m2_mean / m_k_2_mean - 1)) 
                                     * d_m_k_2_mean)
         print(f"T={temp}, L={L}, Mean Correlation Length={correlation_lengths[t, l]}, Std Dev={d_correlation_lengths[t, l]}")
+
+
+#Create path and save
+
+
+if not os.path.isdir(quantities_path):
+    os.makedirs(quantities_path)
+    
+np.save(quantities_path + 'csi',correlation_lengths)
+np.save(quantities_path + 'd_csi',d_correlation_lengths)
