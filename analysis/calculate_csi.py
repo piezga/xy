@@ -12,13 +12,21 @@ correlation_lengths = np.empty([len(temperatures), len(sizes)])
 
 d_correlation_lengths = np.empty([len(temperatures), len(sizes)])
 
+
+m2s = np.empty([len(temperatures), len(sizes)])
+
+m_k_2s = np.empty([len(temperatures), len(sizes)])
+
+
+
 for t, temp in enumerate(temperatures):
     print('Calculating T: ' + str(temp))
     for l, L in enumerate(sizes):
 
         path = data_path+'simulation_'+ temp
         L_path = path + '/L_' + str(L) + '/'
-        prefactor = 1 / 2 * np.sin(np.pi / L)
+        prefactor = 1 / (2 * np.sin(np.pi / L))
+        print(prefactor)
         m2_over_tests = np.empty(tests)  # Reset each time
         m_k_2_over_tests = np.empty(tests)
 
@@ -48,8 +56,11 @@ for t, temp in enumerate(temperatures):
         d_m2_mean = np.std(m2_over_tests)/np.sqrt(tests-1)       
 
         m_k_2_mean = np.mean(m_k_2_over_tests)
-        d_m_k_2_mean = np.std(m_k_2_over_tests)/np.sqrt(tests-1)       
- 
+        d_m_k_2_mean = np.std(m_k_2_over_tests)/np.sqrt(tests-1) 
+        
+        m2s[t,l] = m2_mean
+        m_k_2s[t,l] = m_k_2_mean
+        
         correlation_lengths[t, l] = prefactor * np.sqrt(m2_mean/m_k_2_mean - 1)
         d_correlation_lengths[t,l] = (abs(prefactor / 2 / m_k_2_mean / np.sqrt(m2_mean / m_k_2_mean - 1))* d_m2_mean 
                                     + abs(prefactor * m2_mean * -1 / 2 / m_k_2_mean ** 2 / np.sqrt(m2_mean / m_k_2_mean - 1)) 

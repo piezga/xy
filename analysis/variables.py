@@ -8,10 +8,10 @@ external_usb = 0
 
 #Simulation variables
 sigma = '1.800'
-simulations = ['0.6'] 
+simulations = ['0.6','0.8','1','1.2','1.4','1.6'] 
 manual_simulation_ID = 0
-Ls = np.array([32])
-tests = 2
+Ls = np.array([64,128,256])
+tests = 20
 
 
 ################################################################
