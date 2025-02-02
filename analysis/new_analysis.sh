@@ -5,7 +5,7 @@
 
 export CALLED_FROM_BASH=1
 
-for sim_number in {0..20}
+for sim_number in {0..5}
 do
      
     python take_data.py $sim_number
