@@ -26,6 +26,8 @@ int main(int argc, char *argv[]) {
 bool already_termalized = false; //true per fare partire dall'ultima configurazione
 
 int checkpoint = 1000;
+int save_rate = 10;
+
 
 /*
 argc is the argument counter
@@ -582,18 +584,21 @@ printf("Beginning step time record\n\n");
         magne_x_k_im = magne_x_k_im/pow(L,2);
         magne_y_k_im = magne_y_k_im/pow(L,2);
         
-
-
-        fwrite(&magne_x,sizeof(double), 1, data_output_file_x);
-        fwrite(&magne_y,sizeof(double), 1, data_output_file_y);
+    
+        if (step % save_rate == 0) {
+            fwrite(&magne_x,sizeof(double), 1, data_output_file_x);
+            fwrite(&magne_y,sizeof(double), 1, data_output_file_y);
  
-        fwrite(&magne_x_k_re,sizeof(double), 1, data_output_file_x_re);
-        fwrite(&magne_y_k_re,sizeof(double), 1, data_output_file_y_re);
+            fwrite(&magne_x_k_re,sizeof(double), 1, data_output_file_x_re);
+            fwrite(&magne_y_k_re,sizeof(double), 1, data_output_file_y_re);
    
-        fwrite(&magne_x_k_im,sizeof(double), 1, data_output_file_x_im);
-        fwrite(&magne_y_k_im,sizeof(double), 1, data_output_file_y_im);
- //   }
-        // qua devo aggiungere il modo di fourier
+            fwrite(&magne_x_k_im,sizeof(double), 1, data_output_file_x_im);
+            fwrite(&magne_y_k_im,sizeof(double), 1, data_output_file_y_im);
+
+        }
+
+       fflush(stdout);
+
 
     
       }

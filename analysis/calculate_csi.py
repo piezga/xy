@@ -5,6 +5,9 @@ import os
 #create a matrix where the rows are the temperatures
 #and the columns the sizes
 
+
+print(f"Debug: simulation is {simulation}")
+print(f"While simulationS is {simulations}")
 temperatures = simulations
 sizes = Ls
 
