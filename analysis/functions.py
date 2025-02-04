@@ -205,6 +205,21 @@ def autocorrelation_time(series, max_lag=None):  #In futuro da implementare la F
     autocorr = np.array(autocorr)
     tau_int = 1 + 2 * np.sum(autocorr[1:])  # Skip lag=0 for the sum
     return tau_int, autocorr
-    
+
+
+def csi_error(m, dm, mk, dmk, covariance): #Gives the error for csi WITHOUT PREFACTOR
+  
+
+  m_term = m**2/(mk**4 * (m**2/mk**2 -1)) * dm**2
+  mk_term = m**4/(mk**6 * (m**2/mk**2 -1)) * dmk**2
+  cross_term = 2 * m**3/(mk**5 * (m**2/mk**2 -1)) * covariance
+  
+  square_error = m_term + mk_term - cross_term
+  error = np.sqrt(square_error)
+
+  return error
+
+
+
 if __name__ == "__main__":
   print('Just a module! There is not a reason to execute it!')

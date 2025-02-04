@@ -7,16 +7,16 @@ import os
 external_usb = 0
 
 #Simulation variables
-sigma = '1.200'
+sigma = '1.800'
 
-simulation_values = np.arange(0.5,1.5,0.2)
+simulation_values = np.arange(0.6,1.7,0.2)
 simulations = [f'{value:.1f}' for value in simulation_values]
 
 manual_simulation_ID = 0
 
-Ls = np.array([32,64])
+Ls = np.array([64,128,256])
 
-tests = 2
+tests = 20
 
 
 ################################################################
