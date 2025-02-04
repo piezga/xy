@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 
 bool already_termalized = false; //true per fare partire dall'ultima configurazione
 
-int checkpoint = 10;
+int checkpoint = 1000;
 
 /*
 argc is the argument counter

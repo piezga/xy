@@ -3,9 +3,9 @@
 
 actual_T=1.3
 first_test=0
-last_test=2
+last_test=1
 simulation=$actual_T
-sigma=2.800
+sigma=1.200
 num_temperatures=0
 
 num_tests=$(( $last_test - $first_test + 1))
