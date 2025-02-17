@@ -23,7 +23,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 
-bool already_termalized = false; //true per fare partire dall'ultima configurazione
+bool already_termalized = true; //true per fare partire dall'ultima configurazione
 
 int checkpoint = 1000;
 int save_rate = 10;
