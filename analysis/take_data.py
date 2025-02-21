@@ -6,8 +6,7 @@ spatial_cor = 0
 thermo = 0
 fourier = 1
 
-#Unused
-chi_max = np.empty(len(Ls))
+
 
 for i in range(tests):
   print('#########################')
@@ -15,8 +14,10 @@ for i in range(tests):
   for L in Ls:
     print('-------------')
     print('L: ', L)
+
     L_path = path+'/L_'+str(L)+'/'
     total_path = L_path +'test_'+str(i)+'/'
+
     T = np.loadtxt(L_path+'Ts_test_'+str(i)+'.txt',ndmin=1)
     m_T_x = []
     m_T_x_re = [] 
@@ -26,6 +27,18 @@ for i in range(tests):
     m_T_y_im = []
     spatial = []
     temperature_saving = True
+
+    # Thermalization
+    
+    if L == 512:
+
+      thermalization = 200 * 10 ** 3
+    
+    else:
+      thermalization = 50 * 10 ** 3
+
+  
+
     for temp in range(len(T)):
      # print('T: ', T[temp])
       if os.path.exists(total_path):
@@ -40,14 +53,14 @@ for i in range(tests):
             and float(each_file[2:9]) == round(T[temp],6)
             and each_file[-5] == 'x') :#in this way i'm taking only just one time the data  
               print(each_file)
-              m_T_x.append(np.fromfile(total_path+each_file[:-7]+'_mx.bin',dtype = 'float')[-700000:])
-              m_T_y.append(np.fromfile(total_path+each_file[:-7]+'_my.bin',dtype = 'float')[-700000:])
+              m_T_x.append(np.fromfile(total_path+each_file[:-7]+'_mx.bin',dtype = 'float')[thermalization:])
+              m_T_y.append(np.fromfile(total_path+each_file[:-7]+'_my.bin',dtype = 'float')[thermalization:])
 
               if fourier:
-                m_T_x_re.append(np.fromfile(total_path+each_file[:-7]+'_mx_re.bin',dtype = 'float')[-700000:])
-                m_T_x_im.append(np.fromfile(total_path+each_file[:-7]+'_mx_im.bin',dtype = 'float')[-700000:])
-                m_T_y_re.append(np.fromfile(total_path+each_file[:-7]+'_my_re.bin',dtype = 'float')[-700000:])
-                m_T_y_im.append(np.fromfile(total_path+each_file[:-7]+'_my_im.bin',dtype = 'float')[-700000:])
+                m_T_x_re.append(np.fromfile(total_path+each_file[:-7]+'_mx_re.bin',dtype = 'float')[thermalization:])
+                m_T_x_im.append(np.fromfile(total_path+each_file[:-7]+'_mx_im.bin',dtype = 'float')[thermalization:])
+                m_T_y_re.append(np.fromfile(total_path+each_file[:-7]+'_my_re.bin',dtype = 'float')[thermalization:])
+                m_T_y_im.append(np.fromfile(total_path+each_file[:-7]+'_my_im.bin',dtype = 'float')[thermalization:])
   
               if spatial_cor:
                 spatial.append(np.fromfile(total_path+each_file[:-7]+'_spatial.bin',dtype = 'float'))

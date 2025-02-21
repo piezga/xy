@@ -7,16 +7,18 @@ import os
 external_usb = 0
 
 #Simulation variables
-sigma = '1.200'
+sigma = '1.800'
 
-simulation_values = np.arange(0.5,1.4,0.1)
+simulation_values = np.arange(0.6,1.7,0.2)
 simulations = [f'{value:.1f}' for value in simulation_values]
+temperatures = simulations
 
-manual_simulation_ID = 0
+manual_simulation_ID = 3
 
-Ls = np.array([32,64,128])
+Ls = np.array([64,128,256])
+sizes = Ls
 
-tests = 2
+tests = 20
 
 
 ################################################################
@@ -42,7 +44,6 @@ usb_drive_path = '/media/piezga/toshiba/xy/'
 data_path =   '../data/sigma_'+sigma+'/'
 path = data_path+'simulation_'+str(simulation)
 quantities_path = data_path + 'global_quantities/'
-
 
 if external_usb:
     path = usb_drive_path +'simulation_'+str(simulation)

@@ -6,8 +6,6 @@ from functions import covariance, csi_error
 #and the columns the sizes
 
 
-temperatures = simulations
-sizes = Ls
 
 correlation_lengths = np.empty([len(temperatures), len(sizes)])
 
@@ -22,9 +20,10 @@ m_k_2s = np.empty([len(temperatures), len(sizes)])
 
 for t, temp in enumerate(temperatures):
     print('Calculating T: ' + str(temp))
+    path = data_path+'simulation_'+ temp
+    
     for l, L in enumerate(sizes):
 
-        path = data_path+'simulation_'+ temp
         L_path = path + '/L_' + str(L) + '/'
         prefactor = 1 / (2 * np.sin(np.pi / L))
 
@@ -39,7 +38,7 @@ for t, temp in enumerate(temperatures):
 
         for test in range(tests):
 
-            print('Path is ' + path)
+            print('Path is ' + L_path)
 
 
             mx = np.load(L_path + f"magnetization/mx_test_{test}.npy", allow_pickle=True)
