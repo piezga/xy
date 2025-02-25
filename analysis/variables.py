@@ -51,9 +51,7 @@ if external_usb:
 
 
 #Information printing
-print('Simulation: ', simulation)
 print('SIGMA: ', sigma)
-print('Path is ', path)
 
 
 
