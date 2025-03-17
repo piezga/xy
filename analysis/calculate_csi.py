@@ -69,7 +69,7 @@ for t, temp in enumerate(temperatures):
 
             print(f"T={temp}, L={L}, Test={test}, m2={np.mean(m2)}, m_k_2={np.mean(m_k_2)}")
      
-
+        #sbagliato dividere per np.sqrt
         m2_mean = np.mean(m2_over_tests)
         d_m2_mean = np.std(m2_over_tests)/np.sqrt(tests-1)       
 
@@ -85,8 +85,10 @@ for t, temp in enumerate(temperatures):
         m2s[t,l] = m2_mean
         m_k_2s[t,l] = m_k_2_mean
 
-        cov = np.cov(m,m_k)[0,1]
-        
+        covariance_matrix = np.cov(m2_over_tests,m_k_2_over_tests)
+        cov = covariance_matrix[0,1]
+        d_m2_mean = covariance_matrix[0,0]
+        d_m_k_2_mean = covariance_matrix[1,1] 
 
 
         correlation_lengths[t, l] = prefactor * np.sqrt(m2_mean/m_k_2_mean - 1)

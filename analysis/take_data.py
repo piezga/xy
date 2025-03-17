@@ -1,6 +1,9 @@
 from functions import *
 import sys
 
+
+end = 500*10**3
+
 #Flags
 spatial_cor = 0
 thermo = 0
@@ -53,14 +56,14 @@ for i in range(tests):
             and float(each_file[2:9]) == round(T[temp],6)
             and each_file[-5] == 'x') :#in this way i'm taking only just one time the data  
               print(each_file)
-              m_T_x.append(np.fromfile(total_path+each_file[:-7]+'_mx.bin',dtype = 'float')[thermalization:])
-              m_T_y.append(np.fromfile(total_path+each_file[:-7]+'_my.bin',dtype = 'float')[thermalization:])
+              m_T_x.append(np.fromfile(total_path+each_file[:-7]+'_mx.bin',dtype = 'float')[thermalization:end])
+              m_T_y.append(np.fromfile(total_path+each_file[:-7]+'_my.bin',dtype = 'float')[thermalization:end])
 
               if fourier:
-                m_T_x_re.append(np.fromfile(total_path+each_file[:-7]+'_mx_re.bin',dtype = 'float')[thermalization:])
-                m_T_x_im.append(np.fromfile(total_path+each_file[:-7]+'_mx_im.bin',dtype = 'float')[thermalization:])
-                m_T_y_re.append(np.fromfile(total_path+each_file[:-7]+'_my_re.bin',dtype = 'float')[thermalization:])
-                m_T_y_im.append(np.fromfile(total_path+each_file[:-7]+'_my_im.bin',dtype = 'float')[thermalization:])
+                m_T_x_re.append(np.fromfile(total_path+each_file[:-7]+'_mx_re.bin',dtype = 'float')[thermalization:end])
+                m_T_x_im.append(np.fromfile(total_path+each_file[:-7]+'_mx_im.bin',dtype = 'float')[thermalization:end])
+                m_T_y_re.append(np.fromfile(total_path+each_file[:-7]+'_my_re.bin',dtype = 'float')[thermalization:end])
+                m_T_y_im.append(np.fromfile(total_path+each_file[:-7]+'_my_im.bin',dtype = 'float')[thermalization:end])
   
               if spatial_cor:
                 spatial.append(np.fromfile(total_path+each_file[:-7]+'_spatial.bin',dtype = 'float'))
