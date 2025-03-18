@@ -25,7 +25,7 @@ temps = np.array(temps)
 print(f"Temperatures are : {temps}")
 
 for index in range(len(Ls)):
-    plt.errorbar(temps, csi[:,index]/Ls[index], yerr = d_csi[:,index]/Ls[index], label = str(Ls[index]), capsize = 3, marker = 'o', ls = '')
+    plt.errorbar(temps, csi[:,index]/Ls[index], yerr = d_csi[:,index]/Ls[index], label = str(Ls[index]), capsize = 3, marker = '.', ls = '')
 
 plt.xlabel('Temperature')
 plt.ylabel('Csi/L')

@@ -210,8 +210,8 @@ def autocorrelation_time(series, max_lag=None):  #In futuro da implementare la F
 def csi_error(m, dm, mk, dmk, covariance): #Gives the error for csi WITHOUT PREFACTOR
   
 
-  m_term = m**2/(mk**4 * (m**2/mk**2 -1)) * dm**2
-  mk_term = m**4/(mk**6 * (m**2/mk**2 -1)) * dmk**2
+  m_term = m**2/(mk**4 * (m**2/mk**2 -1)) * dm
+  mk_term = m**4/(mk**6 * (m**2/mk**2 -1)) * dmk
   cross_term = 2 * m**3/(mk**5 * (m**2/mk**2 -1)) * covariance
   
   square_error = m_term + mk_term - cross_term

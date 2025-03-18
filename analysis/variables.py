@@ -15,7 +15,7 @@ temperatures = simulations
 
 manual_simulation_ID = 3
 
-Ls = np.array([64,128,256,512])
+Ls = np.array([64,128,256,512,1024])
 sizes = Ls
 
 tests = 20

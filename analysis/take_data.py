@@ -35,10 +35,14 @@ for i in range(tests):
     
     if L == 512:
 
-      thermalization = 200 * 10 ** 3
+      thermalization = 50 * 10 ** 3
+
+    elif L== 1024:
+
+      thermalization = 100*10**3
     
     else:
-      thermalization = 50 * 10 ** 3
+      thermalization = 25 * 10 ** 3
 
   
 

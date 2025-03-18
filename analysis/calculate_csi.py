@@ -85,14 +85,14 @@ for t, temp in enumerate(temperatures):
         m2s[t,l] = m2_mean
         m_k_2s[t,l] = m_k_2_mean
 
-        covariance_matrix = np.cov(m2_over_tests,m_k_2_over_tests)
+        covariance_matrix = np.cov(m2_over_tests,m_k_2_over_tests)/(tests-1)
         cov = covariance_matrix[0,1]
         d_m2_mean = covariance_matrix[0,0]
         d_m_k_2_mean = covariance_matrix[1,1] 
 
 
         correlation_lengths[t, l] = prefactor * np.sqrt(m2_mean/m_k_2_mean - 1)
-        d_correlation_lengths[t,l] = prefactor * csi_error(m_mean, d_m_mean, m_k_mean, d_m_k_mean, cov)
+        d_correlation_lengths[t,l] = prefactor * csi_error(m_mean, d_m2_mean, m_k_mean, d_m_k_2_mean, cov)
         print(f"T={temp}, L={L}, Mean Correlation Length={correlation_lengths[t, l]}, Std Dev={d_correlation_lengths[t, l]}")
         print(f"Covariance = {cov}")
 
